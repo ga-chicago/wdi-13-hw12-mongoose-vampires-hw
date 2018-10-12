@@ -24,6 +24,10 @@ mongoose.connection.on('error', (err) => {
 	console.log(err, 'Mongoose error');
 });
 
+// Made doubles so had to 'reset' and drop collection
+// mongoose.connection.collections['vampires'].drop( function(err) {
+//     console.log('collection dropped');
+// });
 
 /////////////////////////////////////////////////
 //Write your answers to add, query, update, remove, and Hungry for More below.
@@ -278,7 +282,7 @@ mongoose.connection.on('error', (err) => {
 // 		}	
 // });
 
-
+// 3. Love at least one of the following: appearing innocent, trickery, lurking in rotting mansions, R&B music
 // Vampire.find({$or:[
 // 	{loves: 'appearing innocent'},
 // 	{loves: 'lurking in rotting mansions'},
@@ -291,32 +295,17 @@ mongoose.connection.on('error', (err) => {
 // 		}	
 // });
 
-// 3. Love at least one of the following: appearing innocent, trickery, lurking in rotting mansions, R&B music
-// Vampire.find({$or:[
-// 	{loves: 'appearing innocent'},
-// 	{loves: 'lurking in   rotting mansions'},
-// 	{loves: 'R&B music'}
-// 	]},(err, innocentMansionsRnB) => {
-// 		if (err){
-// 			console.log(err);
-// 		} else {
-// 			console.log("------------------------------ innocentMansionsRnB ------------------\n", innocentMansionsRnB);
-// 		}	
-// });
-
-mongoose.connection.collections['vampires'].drop( function(err) {
-    console.log('collection dropped');
-});
-
 // 4. Love fancy cloaks but not if they also love either top hats or virgin blood * Hint-You will also have to use $nin *
-// Vampire.find({loves: 'fancy cloaks', loves: {$nin: ['top hats', 'virgin blood']}},
-// 	(err, fancyCloaksNoTopHats) => {
-// 		if (err){
-// 			console.log(err);
-// 		} else {
-// 			console.log("------------------------------ fancyCloaksNoTopHats ------------------\n", fancyCloaksNoTopHats);
-// 		}	
-// });
+Vampire.find({loves: 'fancy cloaks', loves: {$nin: ['top hats', 'virgin blood']}},
+	(err, fancyCloaksNoTopHats) => {
+		if (err){
+			console.log(err);
+		} else {
+			console.log("------------------------------ fancyCloaksNoTopHats ------------------\n", fancyCloaksNoTopHats);
+		}	
+});
+// Cannot seem to get the syntax and/or logic right, tried many things^
+
 
 /////////////////////////////////////////////////
 //### Negative Selection
