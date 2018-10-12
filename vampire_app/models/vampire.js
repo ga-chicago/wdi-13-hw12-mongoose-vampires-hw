@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+// const vampireArray = require('../populateVampires')
 const vampireSchema = mongoose.Schema({
 	//write your schema fields here
 	name: {type: String, required: true},

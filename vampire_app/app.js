@@ -1,7 +1,13 @@
 // 1. Require your node modules
 const mongoose = require('mongoose');
+
 const express = require('express'); //idk maybe
-const Vampire = 
+
+const Vampire = require('./models/vampire.js')
+
+// require('../db.js');
+
+// const vampireArray = require('../vampire_app/populateVampires');
 // 2. Require your model (and possibly your extra data source);
 
 // 3. Connect your database and collection name
@@ -16,9 +22,33 @@ const Vampire =
 /////////////////////////////////////////////////
 // INSERT USING MONGOOSE
 // ### Add the vampire data that we gave you
-
+// Vampire.create(vampireArray, (err, data) => {
+// 		console.log('added vampire');
+// 		mongoose.connection.close()
+// })
 // ### Add some new vampire data
 
+const vampFil =	{
+		name: 'fil',
+		hair_color: 'brown',
+		eye_color: 'brown',
+		dob: new Date("12-13-1991"),
+		loves: ['snowboarding', 'fighting'],
+		location: ['hell'],
+		gender: 'm',
+		victims: 4
+	}
+Vampire.create(vampFil,
+	(err, createdVampire) => {
+		console.log('hi');
+			// if(err){
+				// console.log(err);
+			// }else {
+				console.log(createdVampire);
+			// }
+	}
+)
+// console.log(Vampire);
 /////////////////////////////////////////////////
 // ## QUERYING
 /////////////////////////////////////////////////
