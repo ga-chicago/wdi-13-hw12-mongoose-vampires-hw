@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 
 
-const vampireSchema  = new Schema({
+const vampireSchema  = mongoose.Schema({
 	name: {type: String, required: true},
 	hair_color: {type: String, default: 'blonde'},
 	dob: Date,
