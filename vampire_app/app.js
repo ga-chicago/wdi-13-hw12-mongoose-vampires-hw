@@ -2,7 +2,8 @@
 const mongoose = require('mongoose');
 
 // 2. Require your model (and possibly your extra data source);
-const Vampire = require('/models/vampire.js');
+const Vampire = require('./models/vampire.js');
+
 const vampires = require('./populateVampires.js');
 
 // 3. Connect your database and collection name
@@ -29,11 +30,61 @@ mongoose.connection.on('error', (err) => {
 
 // Note: Remember to close your connection after you add, update, remove from your database
 /////////////////////////////////////////////////
+
 /////////////////////////////////////////////////
 // INSERT USING MONGOOSE
+
 // ### Add the vampire data that we gave you
+Vampire.collection.insertMany(vampires,(err, data) => {
+    console.log("Added Provided Vampire Data")
+    mongoose.connection.close();
+  });
+
 
 // ### Add some new vampire data
+Vampire.create({
+	name: 'Kiss-Shot Acerola-Orion Heart-Under-Blade',
+	hair_color: 'gold',
+	eye_color: 'gold',
+	dob: new Date(1420, 4, 20, 5, 50),
+	loves: ['doughnuts', 'men in samurai armour'],
+	location: 'Eikou Cram School',
+	gender: 'f',
+	victims: 3759
+});
+
+Vampire.create({
+	name: 'Lilith Sahl',
+	hair_color: 'red',
+	eye_color: 'yellow',
+	dob: new Date(2085, 9, 26, 23, 22),
+	loves: ['medicine', 'humans'],
+	location: 'Rome',
+	gender: 'f',
+	victims: 0
+});
+
+Vampire.create({
+	name: 'Alucard',
+	hair_color: 'black',
+	eye_color: 'red',
+	dob: new Date(1450, 11, 15, 3, 30),
+	loves: ['himself', 'Queen Elizabeth II'],
+	location: 'Vatican',
+	gender: 'm',
+	victims: 5284
+});
+
+Vampire.create({
+	name: 'Dio Brando',
+	hair_color: 'blonde',
+	eye_color: 'orange',
+	dob: new Date(1867, 3, 9, 20, 2),
+	loves: ['red wine', 'reading'],
+	location: 'Joestar Estate',
+	gender: 'm',
+	victims: 1
+});
 
 /////////////////////////////////////////////////
 // ## QUERYING
