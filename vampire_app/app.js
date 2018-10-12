@@ -213,16 +213,54 @@ const Vampire = require('./models/vampire')
 // 	}	
 // })
 
-Vampire.find({$or: [{hair_color: 'red'}, {eye_color: 'green'}]}, (err, loveCheck) => {
-	if(err) {
-		console.log(err);
-	} else {
-		console.log(loveCheck);
-	}	
-})
+// Vampire.find({$or: [{hair_color: 'red'}, {eye_color: 'green'}]}, (err, loveCheck) => {
+// 	if(err) {
+// 		console.log(err);
+// 	} else {
+// 		console.log(loveCheck);
+// 	}	
+// })
 
 /////////////////////////////////////////////////
 //### Select objects that match one of several values
+
+// const frilly = ['frilly shirt sleeves', 'frilly collars']
+// const brood = ['brooding'];
+// const otherLoves = ['appearing innocent', 'trickery', 'lurking in rotting mansions', 'R&B music']
+// const moreLoves = ['fancy cloaks']
+// const noLove = ['top hats', 'virgin blood']
+
+// Vampire.find({loves: {$in: frilly}}, (err, vampLoves) => {
+// 	if(err) {
+// 		console.log(err);
+// 	} else {
+// 		console.log(vampLoves);
+// 	}
+// })
+
+// Vampire.find({loves: {$in: brood}}, (err, vampLoves) => {
+// 	if(err) {
+// 		console.log(err);
+// 	} else {
+// 		console.log(vampLoves);
+// 	}
+// })
+
+// Vampire.find({loves: {$in: otherLoves}}, (err, vampLoves) => {
+// 	if(err) {
+// 		console.log(err);
+// 	} else {
+// 		console.log(vampLoves);
+// 	}
+// })
+
+// Vampire.find({loves: {$in: moreLoves, $nin: noLove}}, (err, vampLoves) => {
+// 	if(err) {
+// 		console.log(err);
+// 	} else {
+// 		console.log(vampLoves);
+// 	}
+// })
 
 /////////////////////////////////////////////////
 //### Negative Selection
