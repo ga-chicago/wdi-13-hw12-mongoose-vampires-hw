@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const vampire = require('../populateVampires');
+
+const vampireData = require('../populateVampires');
 
 /************************************
 Create Schema:
@@ -30,3 +31,17 @@ const vampireSchema = mongoose.Schema({
 const Vampire = mongoose.model('Vampire', vampireSchema);
 
 module.exports = Vampire;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
