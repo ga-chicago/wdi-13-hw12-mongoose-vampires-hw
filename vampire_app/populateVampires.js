@@ -139,5 +139,5 @@ const vampireData =
   }
 ];
 module.exports = vampireData;
-console.log(vampireData)
-console.log('hey')
+// console.log(vampireData)
+// console.log('hey')
