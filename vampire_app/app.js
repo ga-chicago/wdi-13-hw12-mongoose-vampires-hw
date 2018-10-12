@@ -265,6 +265,42 @@ const Vampire = require('./models/vampire')
 /////////////////////////////////////////////////
 //### Negative Selection
 
+const loves = 'ribbons'
+const eyes = 'brown'
+const from = 'Rome'
+const doesntLove = ['fancy cloaks', 'frilly shirtsleeves', 'appearing innocent', 'being tragic', 'brooding']
+// Vampire.find({$and: [{loves: {$in: loves}}, {eye_color: {$ne: 'brown'}}]}, (err, compare) => {
+// 	if(err) {
+// 		console.log(err);
+// 	} else {
+// 		console.log(compare);
+// 	}	
+// })
+
+// Vampire.find({location: {$nin: from}}, (err, check) => {
+// 	if(err) {
+// 		console.log(err);
+// 	} else {
+// 		console.log(check);
+// 	}
+// })
+
+// Vampire.find({loves: {$nin: doesntLove}}, (err, check) => {
+// 	if(err) {
+// 		console.log(err);
+// 	} else {
+// 		console.log(check);
+// 	}
+// })
+
+Vampire.find({victims: {$lt: 200}}, (err, check) => {
+	if(err) {
+		console.log(err);
+	} else {
+		console.log(check);
+	}
+})
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // ## REPLACE
