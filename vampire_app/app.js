@@ -293,25 +293,74 @@ const doesntLove = ['fancy cloaks', 'frilly shirtsleeves', 'appearing innocent',
 // 	}
 // })
 
-Vampire.find({victims: {$lt: 200}}, (err, check) => {
-	if(err) {
-		console.log(err);
-	} else {
-		console.log(check);
-	}
-})
+// Vampire.find({victims: {$lt: 200}}, (err, check) => {
+// 	if(err) {
+// 		console.log(err);
+// 	} else {
+// 		console.log(check);
+// 	}
+// })
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // ## REPLACE
 
+
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // ## UPDATE
 
+// Vampire.updateOne({name: 'Guy Man'}, {$set: {gender: 'f'}}, {new: true}, (err, updated) => {
+// 	if(err){
+// 		console.log(err);
+// 	} else {
+// 		console.log(updated);
+// 	}
+// })
+
+// Vampire.updateOne({name: 'Eve'}, {$set: {gender: 'm'}}, {new: true}, (err, updated) => {
+// 	if(err){
+// 		console.log(err);
+// 	} else {
+// 		console.log(updated);
+// 	}
+// })
+
+// Vampire.updateOne({name: 'Eve'}, {$rename: {name : moniker}}, (err, updated) => {
+// 	if(err){
+// 		console.log(err);
+// 	} else {
+// 		console.log(updated);
+// }})
+
+// Vampire.updateMany({gender: 'f'}, {gender: 'fems'}, (err, updated) => {
+// 		if(err){
+// 		console.log(err);
+// 	} else {
+// 		console.log(updated);
+// 	}
+// })
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // ## REMOVE
+
+// Vampire.deleteOne({hair_color: {$eq: 'brown'}}, (err, removed) => {
+// 	if(err) {
+// 		console.log(err);
+// 	} else {
+// 		console.log(removed);
+// 	}
+// })
+
+// Vampire.deleteMany({eye_color: {$eq: 'blue'}}, (err, removed) => {
+// 	if(err) {
+// 		console.log(err);
+// 	} else {
+// 		console.log(removed);
+// 	}
+// })
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
