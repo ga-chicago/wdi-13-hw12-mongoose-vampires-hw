@@ -6,7 +6,7 @@ const Vampire = require('./models/vampire.js');
 
 const vampires = require('./populateVampires.js');
 
-// 3. Connect your database and collection name
+// 3. Connect your database and connection name
 const connectionString = 'mongodb://localhost/test';
 
 // 4. Open your mongoose connection
@@ -205,54 +205,118 @@ mongoose.connection.on('error', (err) => {
 // Select all the vampires that:
 
 // 1. Are from New York, New York, US or New Orleans, Louisiana, US
-Vampire.find({$or:[
-	{location: 'New York, New York, US'},
-	{location: 'New Orleans, Louisiana, US'}
-]},(err, NYNO) => {
-	if (err){
-		console.log(err);
-	} else {
-		console.log("------------------------------ NYNO ---------\n", NYNO);
-	}	
-});
+// Vampire.find({$or:[
+// 	{location: 'New York, New York, US'},
+// 	{location: 'New Orleans, Louisiana, US'}
+// 	]},(err, NYNO) => {
+// 		if (err){
+// 			console.log(err);
+// 		} else {
+// 			console.log("------------------------------ NYNO ---------\n", NYNO);
+// 		}	
+// });
 
 // 2. Love brooding or being tragic
-Vampire.find({$or:[
-	{loves: 'brooding'},
-	{loves: 'being tragic'}
-]},(err, broodingTragic) => {
-	if (err){
-		console.log(err);
-	} else {
-		console.log("------------------------------ broodingTragic ---------\n", broodingTragic);
-	}	
-});
+// Vampire.find({$or:[
+// 	{loves: 'brooding'},
+// 	{loves: 'being tragic'}
+// 	]},(err, broodingTragic) => {
+// 		if (err){
+// 			console.log(err);
+// 		} else {
+// 			console.log("------------------------------ broodingTragic ---------\n", broodingTragic);
+// 		}	
+// });
 
 // 3. Have more than 1000 victims or love marshmallows
-Vampire.find({$or:[
-	{victims: {$gt:1000}},
-	{loves: 'marshmallows'}
-]},(err, victims1000Marsh) => {
-	if (err){
-		console.log(err);
-	} else {
-		console.log("------------------------------ victims1000Marsh ---------\n", victims1000Marsh);
-	}	
-});
+// Vampire.find({$or:[
+// 	{victims: {$gt:1000}},
+// 	{loves: 'marshmallows'}
+// 	]},(err, victims1000Marsh) => {
+// 		if (err){
+// 			console.log(err);
+// 		} else {
+// 			console.log("------------------------------ victims1000Marsh ---------\n", victims1000Marsh);
+// 		}	
+// });
+
 // 4. Have red hair or green eyes
-Vampire.find({$or:[
-	{hair_color: 'red'},
-	{eye_color: 'green'}
-]},(err, eyeHairColour) => {
-	if (err){
-		console.log(err);
-	} else {
-		console.log("------------------------------ eyeHairColour ---------\n", eyeHairColour);
-	}	
-});
+// Vampire.find({$or:[
+// 	{hair_color: 'red'},
+// 	{eye_color: 'green'}
+// 	]},(err, eyeHairColour) => {
+// 		if (err){
+// 			console.log(err);
+// 		} else {
+// 			console.log("------------------------------ eyeHairColour ---------\n", eyeHairColour);
+// 		}	
+// });
 
 /////////////////////////////////////////////////
 //### Select objects that match one of several values
+// Select all the vampires that:
+
+// 1. Love either frilly shirtsleeves or frilly collars
+// Vampire.find({$or:[
+// 	{loves: 'frilly shirtsleeves'},
+// 	{loves: 'frilly collars'}
+// 	]},(err, lovesFrilly) => {
+// 		if (err){
+// 			console.log(err);
+// 		} else {
+// 			console.log("------------------------------ lovesFrilly ------------------\n", lovesFrilly);
+// 		}	
+// });
+
+// 2. Love brooding
+// Vampire.find({loves: 'brooding'},
+// 	(err, lovesBrooding) => {
+// 		if (err){
+// 			console.log(err);
+// 		} else {
+// 			console.log("------------------------------ lovesBrooding ------------------\n", lovesBrooding);
+// 		}	
+// });
+
+
+// Vampire.find({$or:[
+// 	{loves: 'appearing innocent'},
+// 	{loves: 'lurking in rotting mansions'},
+// 	{loves: 'R&B music'}
+// 	]},(err, innocentMansionsRnB) => {
+// 		if (err){
+// 			console.log(err);
+// 		} else {
+// 			console.log("------------------------------ innocentMansionsRnB ------------------\n", innocentMansionsRnB);
+// 		}	
+// });
+
+// 3. Love at least one of the following: appearing innocent, trickery, lurking in rotting mansions, R&B music
+// Vampire.find({$or:[
+// 	{loves: 'appearing innocent'},
+// 	{loves: 'lurking in   rotting mansions'},
+// 	{loves: 'R&B music'}
+// 	]},(err, innocentMansionsRnB) => {
+// 		if (err){
+// 			console.log(err);
+// 		} else {
+// 			console.log("------------------------------ innocentMansionsRnB ------------------\n", innocentMansionsRnB);
+// 		}	
+// });
+
+mongoose.connection.collections['vampires'].drop( function(err) {
+    console.log('collection dropped');
+});
+
+// 4. Love fancy cloaks but not if they also love either top hats or virgin blood * Hint-You will also have to use $nin *
+// Vampire.find({loves: 'fancy cloaks', loves: {$nin: ['top hats', 'virgin blood']}},
+// 	(err, fancyCloaksNoTopHats) => {
+// 		if (err){
+// 			console.log(err);
+// 		} else {
+// 			console.log("------------------------------ fancyCloaksNoTopHats ------------------\n", fancyCloaksNoTopHats);
+// 		}	
+// });
 
 /////////////////////////////////////////////////
 //### Negative Selection
