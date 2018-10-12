@@ -107,7 +107,60 @@ Vampire.create({
 // ## QUERYING
 /////////////////////////////////////////////////
 // ### Select by comparison
+// 1.
+Vampire.find({
+	gender: 'f'
+}, (err, foundVampire) => {
+	if(err) {
+		console.log(err);
+	} else {
+		console.log(foundVampire);
+	} mongoose.connection.close();
+})
 
+// 2.
+Vampire.find({
+	victims: {$gte: 500}
+}, (err, foundVampire) => {
+	if(err) {
+		console.log(err);
+	} else {
+		console.log(foundVampire);
+	} mongoose.connection.close();
+})
+
+// 3.
+Vampire.find({
+	victims: {$lte: 150}
+}, (err, foundVampire) => {
+	if(err) {
+		console.log(err);
+	} else {
+		console.log(foundVampire);
+	} mongoose.connection.close();
+})
+
+// 4.
+Vampire.find({
+	victims: {$ne: 210234}
+}, (err, foundVampire) => {
+	if(err) {
+		console.log(err);
+	} else {
+		console.log(foundVampire);
+	} mongoose.connection.close();
+})
+
+// 5.
+Vampire.find({
+	$and: [{victims: {$gt: 150}}, {victims: {$lt: 500}}]
+}, (err, foundVampire) => {
+	if(err) {
+		console.log(err);
+	} else {
+		console.log(foundVampire);
+	} mongoose.connection.close();
+})
 /////////////////////////////////////////////////
 // ### Select by exists or does not exist
 
