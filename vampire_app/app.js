@@ -111,6 +111,45 @@ const Vampire = require('./models/vampire')
 // ## QUERYING
 /////////////////////////////////////////////////
 // ### Select by comparison
+// Vampire.find({gender: 'f'}, (err, foundVampires) => {
+// 	if(err) {
+// 		console.log(err);
+// 	} else {
+// 		console.log(foundVampires);
+// 	}
+// })
+
+// Vampire.find({victims: {$gt: 500}}, (err, foundVictims) => {
+// 	if(err) {
+// 		console.log(err);
+// 	} else {
+// 		console.log(foundVictims);
+// 	}
+// })
+
+// Vampire.find({victims: {$lte: 150}}, (err, foundVictims) => {
+// 	if(err) {
+// 		console.log(err);
+// 	} else {
+// 		console.log(foundVictims);
+// 	}
+// })
+
+// Vampire.find({victims: {$ne: 210234}}, (err, foundVictims) => {
+// 	if(err) {
+// 		console.log(err);
+// 	} else {
+// 		console.log(foundVictims);
+// 	}
+// })
+
+// Vampire.find({victims: {$gt: 150, $lt: 500}}, (err, foundVictims) => {
+// 	if(err) {
+// 		console.log(err);
+// 	} else {
+// 		console.log(foundVictims);
+// 	}
+// })
 
 /////////////////////////////////////////////////
 // ### Select by exists or does not exist
