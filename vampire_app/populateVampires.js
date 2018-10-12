@@ -1,3 +1,5 @@
+const vampireData = 
+
 [
   {
     name: 'Count Chocula',
@@ -135,4 +137,7 @@
     gender: 'm',
     title: 'Osiris of Sewer Rats'
   }
-]
+];
+module.exports = vampireData;
+console.log(vampireData)
+console.log('hey')

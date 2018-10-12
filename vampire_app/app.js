@@ -1,24 +1,25 @@
 // 1. Require your node modules
 const mongoose = require('mongoose')
 // 2. Require your model (and possibly your extra data source);
-const connectionString = 'mongodb://localhost/vampire'
 // 3. Connect your database and collection name
-mongoose.connect(connectionString)
-
-mongoose.connection.on('connected', () => {
-	console.log('Mongoose connected to' + connectionString)
-})
-
-mongoose.connection.on('disconnected', () => {
-	console.log('Mongoose disconnected')
-})
-
-mongoose.connection.on('error', (err) => {
-	console.log(err, 'Mongoose error')
-})
+const vampireData = require('../vampire_app/populateVampires.js')
 // 4. Open your mongoose connection
-// require('./vampire_app/app.js');
-const Vampire = require('./models/vampire.js')
+// const connectionString = 'mongodb://localhost/vampire'
+require('../db.js')
+// mongoose.connect(connectionString)
+const Vampire= require('../vampire_app/models/vampire.js')
+// mongoose.connection.on('connected', () => {
+// 	console.log('Mongoose connected to' + connectionString)
+// })
+
+// mongoose.connection.on('disconnected', () => {
+// 	console.log('Mongoose disconnected')
+// })
+
+// mongoose.connection.on('error', (err) => {
+// 	console.log(err, 'Mongoose error')
+// })
+
 /////////////////////////////////////////////////
 //Write your answers to add, query, update, remove, and Hungry for More below.
 
@@ -27,7 +28,10 @@ const Vampire = require('./models/vampire.js')
 /////////////////////////////////////////////////
 // INSERT USING MONGOOSE
 // ### Add the vampire data that we gave you
-
+Vampire.create(vampireData, (err, data) => {
+	console.log('added provided vampire data')
+	mongoose.connection.close()
+})
 // ### Add some new vampire data
 
 /////////////////////////////////////////////////
