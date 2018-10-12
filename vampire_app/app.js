@@ -296,14 +296,14 @@ mongoose.connection.on('error', (err) => {
 // });
 
 // 4. Love fancy cloaks but not if they also love either top hats or virgin blood * Hint-You will also have to use $nin *
-Vampire.find({loves: 'fancy cloaks', loves: {$nin: ['top hats', 'virgin blood']}},
-	(err, fancyCloaksNoTopHats) => {
-		if (err){
-			console.log(err);
-		} else {
-			console.log("------------------------------ fancyCloaksNoTopHats ------------------\n", fancyCloaksNoTopHats);
-		}	
-});
+// Vampire.find({loves: 'fancy cloaks', loves: {$nin: ['top hats', 'virgin blood']}},
+// 	(err, fancyCloaksNoTopHats) => {
+// 		if (err){
+// 			console.log(err);
+// 		} else {
+// 			console.log("------------------------------ fancyCloaksNoTopHats ------------------\n", fancyCloaksNoTopHats);
+// 		}	
+// });
 // Cannot seem to get the syntax and/or logic right, tried many things^
 
 
