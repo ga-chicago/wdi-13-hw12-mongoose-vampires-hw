@@ -309,6 +309,49 @@ mongoose.connection.on('error', (err) => {
 
 /////////////////////////////////////////////////
 //### Negative Selection
+// Select all vampires that:
+
+// 1. Love ribbons but do not have brown eyes
+// Vampire.find({loves: 'ribbons', eye_color: {$nin: ['brown']}},
+// 	(err, ribbonsNoBrownEyes) => {
+// 		if (err){
+// 			console.log(err);
+// 		} else {
+// 			console.log("------------------------------ ribbonsNoBrownEyes ------------------\n", ribbonsNoBrownEyes);
+// 		}	
+// });
+
+// 2. Are not from Rome
+// Vampire.find({location: {$nin: ['Rome, Italy']}},
+// 	(err, notRome) => {
+// 		if (err){
+// 			console.log(err);
+// 		} else {
+// 			console.log("------------------------------ notRome ------------------\n", notRome);
+// 		}	
+// });
+
+// 3. Do not love any of the following: [fancy cloaks, frilly shirtsleeves, appearing innocent, being tragic, brooding]
+// Vampire.find({loves: {$nin: ['fancy cloaks', 'frilly shirtsleeves', 'appearing innocent', 'being tragic', 'brooding']}},
+// 	(err, noLove) => {
+// 		if (err){
+// 			console.log(err);
+// 		} else {
+// 			console.log("------------------------------ noLove ------------------\n", noLove);
+// 		}	
+// });
+
+// 4. Have not killed more than 200 people
+Vampire.find({victims: {$not: {$gte: 200}}},
+	(err, noKill200) => {
+		if (err){
+			console.log(err);
+		} else {
+			console.log("------------------------------ noKill200 ------------------\n", noKill200);
+		}	
+});
+// Not working ^ ^ ^
+
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
