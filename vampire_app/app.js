@@ -103,61 +103,153 @@ mongoose.connection.on('error', (err) => {
 // ## QUERYING
 /////////////////////////////////////////////////
 // ### Select by comparison
-// Find all the vampires that that are females
-Vampire.find({gender: 'f'}, (err, foundFemales) => {
-		if (err){
-			console.log(err);
-		} else {
-			console.log("---------- foundFemales ---------\n", foundFemales);
-		}	
-	}
-);
 
-// have greater than 500 victims
-Vampire.find({victims: {$gt: 500}}, (err, foundMoreThan500) => {
-		if (err){
-			console.log(err);
-		} else {
-			console.log("---------- foundMoreThan500 ---------\n", foundMoreThan500);
-		}	
-	}
-);
+// 1. Find all the vampires that that are females
+// Vampire.find({gender: 'f'}, (err, foundFemales) => {
+// 		if (err){
+// 			console.log(err);
+// 		} else {
+// 			console.log("---------- foundFemales ---------\n", foundFemales);
+// 		}	
+// 	}
+// );
 
-// have fewer than or equal to 150 victims
-Vampire.find({victims: {$lte: 150}}, (err, foundLessThan150) => {
-		if (err){
-			console.log(err);
-		} else {
-			console.log("---------- foundLessThan150 ---------\n", foundLessThan150);
-		}	
-	}
-);
+// 2. Have greater than 500 victims
+// Vampire.find({victims: {$gt: 500}}, (err, foundMoreThan500) => {
+// 		if (err){
+// 			console.log(err);
+// 		} else {
+// 			console.log("---------- foundMoreThan500 ---------\n", foundMoreThan500);
+// 		}	
+// 	}
+// );
 
-// have a victim count is not equal to 210234
-Vampire.find({victims: {$ne: 210234}}, (err, foundNot210234) => {
-		if (err){
-			console.log(err);
-		} else {
-			console.log("---------- foundNot210234 ---------\n", foundNot210234);
-		}	
-	}
-);
+// 3. Have fewer than or equal to 150 victims
+// Vampire.find({victims: {$lte: 150}}, (err, foundLessThan150) => {
+// 		if (err){
+// 			console.log(err);
+// 		} else {
+// 			console.log("---------- foundLessThan150 ---------\n", foundLessThan150);
+// 		}	
+// 	}
+// );
 
-// have greater than 150 AND fewer than 500 victims
-Vampire.find({victims: {$gt: 150, $lt: 500}}, (err, foundBetween150and500) => {
-		if (err){
-			console.log(err);
-		} else {
-			console.log("---------- foundBetween150and500 ---------\n", foundBetween150and500);
-		}	
-	}
-);
+// 4. Have a victim count is not equal to 210234
+// Vampire.find({victims: {$ne: 210234}}, (err, foundNot210234) => {
+// 		if (err){
+// 			console.log(err);
+// 		} else {
+// 			console.log("---------- foundNot210234 ---------\n", foundNot210234);
+// 		}	
+// 	}
+// );
+
+// 5. Have greater than 150 AND fewer than 500 victims
+// Vampire.find({victims: {$gt: 150, $lt: 500}}, (err, foundBetween150and500) => {
+// 		if (err){
+// 			console.log(err);
+// 		} else {
+// 			console.log("---------- foundBetween150and500 ---------\n", foundBetween150and500);
+// 		}	
+// 	}
+// );
 
 /////////////////////////////////////////////////
 // ### Select by exists or does not exist
+// Select all the vampires that:
+
+// 1. Have a title property
+// Vampire.find({title: {$exists: true}}, (err, foundHasTitleProp) => {
+// 		if (err){
+// 			console.log(err);
+// 		} else {
+// 			console.log("------------------------------ foundHasTitleProp ---------\n", foundHasTitleProp);
+// 		}	
+// 	}
+// );
+
+// 2. Do not have a victims property
+// Vampire.find({victims: {$exists: false}}, (err, foundNoVictimsProp) => {
+// 		if (err){
+// 			console.log(err);
+// 		} else {
+// 			console.log("------------------------------ foundNoVictimsProp ---------\n", foundNoVictimsProp);
+// 		}	
+// 	}
+// );
+
+// 3. Have a title AND no victims
+// Vampire.find({victims: {$exists: false}, title: {$exists: true}}, (err, foundTitleNoVictims) => {
+// 		if (err){
+// 			console.log(err);
+// 		} else {
+// 			console.log("------------------------------ foundTitleNoVictims ---------\n", foundTitleNoVictims);
+// 		}	
+// 	}
+// );
+
+// 4. Have victims AND the victims they have are greater than 1000
+// Vampire.find({victims: {$exists: true, $gt: 1000}}, (err, foundGT1000Victims) => {
+// 		if (err){
+// 			console.log(err);
+// 		} else {
+// 			console.log("------------------------------ foundGT1000Victims ---------\n", foundGT1000Victims);
+// 		}	
+// 	}
+// );
+
+
 
 /////////////////////////////////////////////////
 // ### Select with OR
+// Select all the vampires that:
+
+// 1. Are from New York, New York, US or New Orleans, Louisiana, US
+Vampire.find({$or:[
+	{location: 'New York, New York, US'},
+	{location: 'New Orleans, Louisiana, US'}
+]},(err, NYNO) => {
+	if (err){
+		console.log(err);
+	} else {
+		console.log("------------------------------ NYNO ---------\n", NYNO);
+	}	
+});
+
+// 2. Love brooding or being tragic
+Vampire.find({$or:[
+	{loves: 'brooding'},
+	{loves: 'being tragic'}
+]},(err, broodingTragic) => {
+	if (err){
+		console.log(err);
+	} else {
+		console.log("------------------------------ broodingTragic ---------\n", broodingTragic);
+	}	
+});
+
+// 3. Have more than 1000 victims or love marshmallows
+Vampire.find({$or:[
+	{victims: {$gt:1000}},
+	{loves: 'marshmallows'}
+]},(err, victims1000Marsh) => {
+	if (err){
+		console.log(err);
+	} else {
+		console.log("------------------------------ victims1000Marsh ---------\n", victims1000Marsh);
+	}	
+});
+// 4. Have red hair or green eyes
+Vampire.find({$or:[
+	{hair_color: 'red'},
+	{eye_color: 'green'}
+]},(err, eyeHairColour) => {
+	if (err){
+		console.log(err);
+	} else {
+		console.log("------------------------------ eyeHairColour ---------\n", eyeHairColour);
+	}	
+});
 
 /////////////////////////////////////////////////
 //### Select objects that match one of several values
