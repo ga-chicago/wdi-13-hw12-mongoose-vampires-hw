@@ -208,7 +208,49 @@ Vampire.find({
 })
 /////////////////////////////////////////////////
 // ### Select with OR
+// 1.
+Vampire.find({
+	$or: [{location: 'New York, New York, US'}, {location: 'New Orleans, Louisiana, US'}]
+}, (err, foundVampires) => {
+	if(err) {
+		console.log(err);
+	} else {
+		console.log(foundVampires + 'from NY or New Orleans');
+	} mongoose.connection.close();
+})
 
+// 2.
+Vampire.find({
+	$or: [{loves: {$in: ['brooding']}}, {loves: {$in: ['being tragic']}}]
+}, (err, foundVampires) => {
+	if(err) {
+		console.log(err);
+	} else {
+		console.log(foundVampires + 'brooding tragics');
+	} mongoose.connection.close();
+})
+
+// 3.
+Vampire.find({
+	$or: [{victims: {$gt: 1000}}, {loves: {$in: ['marshmallows']}}]
+}, (err, foundVampires) => {
+	if(err) {
+		console.log(err);
+	} else {
+		console.log(foundVampires + 'marshmallow killers');
+	} mongoose.connection.close();
+})
+
+// 4.
+Vampire.find({
+	$or: [{hair_color: 'red'}, {eye_color: 'green'}]
+}, (err, foundVampires) => {
+	if(err) {
+		console.log(err);
+	} else {
+		console.log(foundVampires + 'red or green');
+	} mongoose.connection.close();
+})
 /////////////////////////////////////////////////
 //### Select objects that match one of several values
 
