@@ -16,7 +16,7 @@ const vampire = {
   victims: 2,
 }
 ************************************/
-const vampireSchema = mongoose.Schema({
+const vampireSchema = new mongoose.Schema({
 	name: {type: String, required: true},
 	hair_color: {type: String, default: 'blonde'},
 	eye_color: String,

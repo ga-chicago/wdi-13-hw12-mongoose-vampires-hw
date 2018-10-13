@@ -154,6 +154,29 @@ Vampire.find({
 // 5.
 Vampire.find({
 	$and: [{victims: {$gt: 150}}, {victims: {$lt: 500}}]
+}, (err, foundVampires) => {
+	if(err) {
+		console.log(err);
+	} else {
+		console.log(foundVampires);
+	} mongoose.connection.close();
+})
+/////////////////////////////////////////////////
+// ### Select by exists or does not exist
+// 1.
+Vampire.find({
+	title: {$exists: true}
+}, (err, foundVampires) => {
+	if(err) {
+		console.log(err);
+	} else {
+		console.log(foundVampires);
+	} mongoose.connection.close();
+})
+
+// 2.
+Vampire.find({
+	victims: {$exists: false}
 }, (err, foundVampire) => {
 	if(err) {
 		console.log(err);
@@ -161,9 +184,28 @@ Vampire.find({
 		console.log(foundVampire);
 	} mongoose.connection.close();
 })
-/////////////////////////////////////////////////
-// ### Select by exists or does not exist
 
+// 3.
+Vampire.find({
+	$and: [{title: {$exists: true}}, {victims: {$exists: false}}]
+}, (err, foundVampires) => {
+	if(err) {
+		console.log(err);
+	} else {
+		console.log(foundVampires);
+	} mongoose.connection.close();
+})
+
+// 4.
+Vampire.find({
+	$and: [{victims: {$exists: true}}, {victims: {$gt: 1000}}]
+}, (err, foundVampires) => {
+	if(err) {
+		console.log(err);
+	} else {
+		console.log(foundVampires);
+	} mongoose.connection.close();
+})
 /////////////////////////////////////////////////
 // ### Select with OR
 
