@@ -98,7 +98,7 @@ const Vampire = require('./models/vampire')
 // 	if(err){
 // 		console.log(err)
 // 	} else {
-// 		console.log(foundFemale)
+// 		console.log(foundVampires)
 // 	}
 // })
 
@@ -287,27 +287,162 @@ const Vampire = require('./models/vampire')
 
 // love fancy cloaks but not if they also love either top hats or virgin blood * Hint-You will also have to use $nin *
 
-Vampire.find({$or: 
-	[{loves: 'fancy cloaks'},
-	{loves: {$nin: [ 'top hats', 'virgin blood']}}
-	]}, (err, foundVampires) => {
+// Vampire.find({$and: 
+// 	[{loves: 'fancy cloaks'},
+// 	{loves: {$nin: [ 'top hats', 'virgin blood']}}
+// 	]}, (err, foundVampires) => {
+// 	if(err){
+// 		console.log(err)
+// 	} else {
+// 		console.log(foundVampires)
+// 	}
+// 	})
+
+/////////////////////////////////////////////////
+//### Negative Selection
+
+// love ribbons but do not have brown eyes
+
+// Vampire.find({$and: 
+// 	[{loves: 'ribbons'},
+// 	{eye_color: {$ne: 'brown'}}
+// 	]}, (err, foundVampires) => {
+// 	if(err){
+// 		console.log(err)
+// 	} else {
+// 		console.log(foundVampires)
+// 	}
+// 	})
+
+// are not from Rome
+
+// Vampire.find(
+// 	{location: {$ne: 'Rome, Italy'}}, (err, foundVampires) => {
+// 	if(err){
+// 		console.log(err)
+// 	} else {
+// 		console.log(foundVampires)
+// 	}
+// 	})
+
+// do not love any of the following: [fancy cloaks, frilly shirtsleeves, appearing innocent, being tragic, brooding]
+
+// Vampire.find(
+// 	{loves: {$nin: ["fancy cloaks","frilly shirtsleeves","appearing innocent","being tragic","brooding"]}}
+// 	, (err, foundVampires) => {
+// 	if(err){
+// 		console.log(err)
+// 	} else {
+// 		console.log(foundVampires)
+// 	}
+// 	})
+
+// have not killed more than 200 people
+
+// Vampire.find({
+// 	victims: {$lte: 200}
+// }, (err, foundVampires) => {
+// 	if(err){
+// 		console.log(err)
+// 	} else {
+// 		console.log(foundVampires)
+// 	}
+// 	})
+
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+// ## REPLACE
+
+// replace the vampire called 'Claudia' with a vampire called 'Eve'. 'Eve' will have a key called 'portrayed_by' with the value 'Tilda Swinton'
+
+
+
+// replace the first male vampire with another whose name is 'Guy Man', and who has a key 'is_actually' with the value 'were-lizard'
+
+
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+// ## UPDATE
+
+// Update 'Guy Man' to have a gender of 'f'
+
+// Vampire.update({
+// 	name: 'Guy Man'},
+// 	{$set: {gender: 'f'}
+// }, (err, foundVampires) => {
+// 	if(err){
+// 		console.log(err)
+// 	} else {
+// 		console.log(foundVampires)
+// 	}
+// 	})
+
+
+// Update 'Eve' to have a gender of 'm'
+
+// Vampire.update({
+// 	name: 'Eve'},
+// 	{$set: {gender: 'm'}
+// }, (err, foundVampires) => {
+// 	if(err){
+// 		console.log(err)
+// 	} else {
+// 		console.log(foundVampires)
+// 	}
+// 	})
+
+// Update 'Guy Man' to have an array called 'hates' that includes 'clothes' and 'jobs'
+
+
+// Vampire.update({
+// 	name: 'Guy Man'},
+// 	{$push: {hates: ['clothes', 'jobs']}
+// }, (err, foundVampires) => {
+// 	if(err){
+// 		console.log(err)
+// 	} else {
+// 		console.log(foundVampires)
+// 	}
+// 	})
+
+// Update 'Guy Man's' hates array also to include 'alarm clocks' and 'jackalopes'
+
+// Vampire.update({
+// 	name: 'Guy Man'},
+// 	{$addToSet: {hates: ['alarm clocks', 'jackalopes']}
+// }, (err, foundVampires) => {
+// 	if(err){
+// 		console.log(err)
+// 	} else {
+// 		console.log(foundVampires)
+// 	}
+// 	})
+
+// Rename 'Eve's' name field to 'moniker'
+
+// Vampire.update({
+// 	name: 'Eve'},
+// 	{$rename: {name: 'moniker'}
+// }, (err, foundVampires) => {
+// 	if(err){
+// 		console.log(err)
+// 	} else {
+// 		console.log(foundVampires)
+// 	}
+// 	})
+
+// We now no longer want to categorize female gender as "f", but rather as fems. Update all females so that the they are of gender "fems".
+
+Vampire.updateMany({
+	gender: 'f'},
+	{$set: {gender: 'fems'}
+}, (err, foundVampires) => {
 	if(err){
 		console.log(err)
 	} else {
 		console.log(foundVampires)
 	}
 	})
-
-/////////////////////////////////////////////////
-//### Negative Selection
-
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
-// ## REPLACE
-
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
-// ## UPDATE
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
