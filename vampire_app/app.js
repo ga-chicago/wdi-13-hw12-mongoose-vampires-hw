@@ -170,16 +170,55 @@ const Vampire = require('./models/vampire')
 
 /////////////////////////////////////////////////
 // ### Select with OR
-Vampire.find({$or: 
-	[{location: 'New York, New York, US'},
-	{location: 'New Orleans, Louisiana, US'}
-	]}, (err, foundVampires) => {
-	if(err){
-		console.log(err)
-	} else {
-		console.log(foundVampires)
-	}
-	})
+// Vampire.find({$or: 
+// 	[{location: 'New York, New York, US'},
+// 	{location: 'New Orleans, Louisiana, US'}
+// 	]}, (err, foundVampires) => {
+// 	if(err){
+// 		console.log(err)
+// 	} else {
+// 		console.log(foundVampires)
+// 	}
+// 	})
+
+//loves brooding or being tragic
+
+// Vampire.find({$or: 
+// 	[{loves: 'brooding'},
+// 	{loves: 'being tragic'}
+// 	]}, (err, foundVampires) => {
+// 	if(err){
+// 		console.log(err)
+// 	} else {
+// 		console.log(foundVampires)
+// 	}
+// 	})
+
+//greater than 1000 victims or loves marshmallows
+
+// Vampire.find({$or: 
+// 	[{loves: 'marshmallows'},
+// 	{victims: {$gt: 1000}}
+// 	]}, (err, foundVampires) => {
+// 	if(err){
+// 		console.log(err)
+// 	} else {
+// 		console.log(foundVampires)
+// 	}
+// 	})
+
+//red hair or green eyes
+
+// Vampire.find({$or: 
+// 	[{hair_color: 'red'},
+// 	{eye_color: 'green'}
+// 	]}, (err, foundVampires) => {
+// 	if(err){
+// 		console.log(err)
+// 	} else {
+// 		console.log(foundVampires)
+// 	}
+// 	})
 /////////////////////////////////////////////////
 //### Select objects that match one of several values
 
