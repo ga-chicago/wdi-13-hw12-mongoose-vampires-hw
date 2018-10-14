@@ -33,22 +33,36 @@ const Vampire = require('../vampire_app/models/vampire.js')
 // 	mongoose.connection.close()
 // })
 // ### Add some new vampire data
-// Vampire.create({
-// 	name: 'Billy',
-// 	  hair_color: 'brown',
-// 	  eye_color: 'black',
-// 	  dob: 12-12-12,
-// 	  loves: ['candy', 'cigarettes', 'cows'],
-// 	  location: 'Chicago',
-// 	  gender: 'male',
-// 	  victims: 134
-// }, (err, createdVampire) => {
-// 	if(err){
-// 		console.log(err)
-// 	} else {
-// 		console.log(createdVampire)
-// 	}
-// })
+Vampire.collection.insertMany(vampireData,(err, data) => {
+		[{name: 'Billy',
+	  hair_color: 'brown',
+	  eye_color: 'black',
+	  dob: 12-12-12,
+	  loves: ['candy', 'cigarettes', 'cows'],
+	  location: 'Chicago',
+	  gender: 'male',
+	  victims: 134
+}],
+		[{name: 'Jason',
+	  hair_color: 'black',
+	  eye_color: 'green',
+	  dob: 12-12-12,
+	  loves: ['carnivals', 'tv', 'fictional creatures'],
+	  location: 'Canada',
+	  gender: 'male',
+	  victims: 678
+}], (err, createdVampires) => {
+	if(err){
+		console.log(err)
+	} else {
+		console.log(createdVampire)
+	}
+}
+
+    console.log("added provided vampire data")
+    mongoose.connection.close();
+  });
+
 // Vampire.create({
 // 	name: 'Josh',
 // 	  hair_color: 'brownish',
@@ -82,26 +96,47 @@ const Vampire = require('../vampire_app/models/vampire.js')
 // 		console.log(createdVampire)
 // 	}
 // })
-Vampire.create({
-	name: 'Hillary',
-	  hair_color: 'black',
-	  eye_color: 'green',
-	  dob: new Date('12-12-12'),
-	  loves: ['eating people', 'killing people', 'cats'],
-	  location: 'Washington',
-	  gender: 'female',
-	  victims: 2
-}, (err, createdVampire) => {
-	if(err){
-		console.log(err)
-	} else {
-		console.log(createdVampire)
-	}
-})
+// Vampire.create({
+// 	name: 'Hillary',
+// 	  hair_color: 'black',
+// 	  eye_color: 'green',
+// 	  dob: new Date('12-12-12'),
+// 	  loves: ['eating people', 'killing people', 'cats'],
+// 	  location: 'Washington',
+// 	  gender: 'female',
+// 	  victims: 2
+// }, (err, createdVampire) => {
+// 	if(err){
+// 		console.log(err)
+// 	} else {
+// 		console.log(createdVampire)
+// 	}
+// })
 // console.log(Vampire.collection)
 /////////////////////////////////////////////////
 // ## QUERYING
+
 /////////////////////////////////////////////////
+//all female vampires
+db.vampires.find({
+	gender: 'f'
+})
+//greater than 500 
+db.vampires.find({
+	victims: {$gt: 500}
+})
+//less than or equal to 150 
+db.vampires.find({
+	victims: {$lte: 150}
+})
+//not equal to
+db.vampires.find({
+	victims: {$lte: 210234}
+})
+
+db.vampires.find({
+	victims: {$gt: 150, $lt: 500}
+})
 // ### Select by comparison
 
 /////////////////////////////////////////////////
