@@ -147,16 +147,64 @@ const vampireData = require('./populateVampires');
 // 	}
 // });
 
-Vampire.find({victims: {$exists: true, $gt: 1000}}, (err, foundVamps) => {
+// Vampire.find({victims: {$exists: true, $gt: 1000}}, (err, foundVamps) => {
+// 	if(err) {
+// 		console.log(err);
+// 	} else {
+// 		console.log(foundVamps);//will return matches as an array
+// 	}
+// });
+
+/////////////////////////////////////////////////
+// ### Select with OR
+
+// Vampire.find({$or: 
+// 	[
+// 		{location: "New York, New York, US"},
+// 		{location: "New Orleans, Louisiana, US"}
+// 	]}, (err, foundVamps) => {
+// 	if(err) {
+// 		console.log(err);
+// 	} else {
+// 		console.log(foundVamps);//will return matches as an array
+// 	}
+// });
+
+// Vampire.find({$or: 
+// 	[
+// 		{loves: "brooding"},
+// 		{loves: "being tragic"}
+// 	]}, (err, foundVamps) => {
+// 	if(err) {
+// 		console.log(err);
+// 	} else {
+// 		console.log(foundVamps);//will return matches as an array
+// 	}
+// });
+
+// Vampire.find({$or: 
+// 	[
+// 		{victims: {$gt: 1000}},
+// 		{loves: "marshmallows"}
+// 	]}, (err, foundVamps) => {
+// 	if(err) {
+// 		console.log(err);
+// 	} else {
+// 		console.log(foundVamps);//will return matches as an array
+// 	}
+// });
+
+Vampire.find({$or: 
+	[
+		{hair_color: "red"},
+		{eye_color: "green"}
+	]}, (err, foundVamps) => {
 	if(err) {
 		console.log(err);
 	} else {
 		console.log(foundVamps);//will return matches as an array
 	}
 });
-
-/////////////////////////////////////////////////
-// ### Select with OR
 
 /////////////////////////////////////////////////
 //### Select objects that match one of several values
