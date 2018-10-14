@@ -1,5 +1,7 @@
 // 1. Require your node modules
+const express = require('express')
 const mongoose = require('mongoose')
+const app = express();
 // 2. Require your model (and possibly your extra data source);
 // 3. Connect your database and collection name
 const vampireData = require('../vampire_app/populateVampires.js')
@@ -15,7 +17,7 @@ const Vampire = require('../vampire_app/models/vampire.js')
 // mongoose.connection.on('disconnected', () => {
 // 	console.log('Mongoose disconnected')
 // })
-
+// console.log(vampireData)
 // mongoose.connection.on('error', (err) => {
 // 	console.log(err, 'Mongoose error')
 // })
@@ -62,7 +64,16 @@ Vampire.collection.insertMany(vampireData,(err, data) => {
     console.log("added provided vampire data")
     mongoose.connection.close();
   });
-
+Vampire.collection.insert([{
+	name: 'Billy',
+	  hair_color: 'brown',
+	  eye_color: 'black',
+	  dob: 12-12-12,
+	  loves: ['candy', 'cigarettes', 'cows'],
+	  location: 'Chicago',
+	  gender: 'male',
+	  victims: 134
+}]);
 // Vampire.create({
 // 	name: 'Josh',
 // 	  hair_color: 'brownish',
@@ -117,31 +128,47 @@ Vampire.collection.insertMany(vampireData,(err, data) => {
 // ## QUERYING
 
 /////////////////////////////////////////////////
-//all female vampires
-db.vampires.find({
-	gender: 'f'
-})
-//greater than 500 
-db.vampires.find({
-	victims: {$gt: 500}
-})
-//less than or equal to 150 
-db.vampires.find({
-	victims: {$lte: 150}
-})
-//not equal to
-db.vampires.find({
-	victims: {$lte: 210234}
-})
-
-db.vampires.find({
-	victims: {$gt: 150, $lt: 500}
-})
 // ### Select by comparison
+//all female vampires
+// db.vampires.find({
+// 	gender: 'f'
+// })
+// //greater than 500 
+// db.vampires.find({
+// 	victims: {$gt: 500}
+// })
+// //less than or equal to 150 
+// db.vampires.find({
+// 	victims: {$lte: 150}
+// })
+// //not equal to
+// db.vampires.find({
+// 	victims: {$lte: 210234}
+// })
+
+// db.vampires.find({
+// 	victims: {$gt: 150, $lt: 500}
+// })
 
 /////////////////////////////////////////////////
 // ### Select by exists or does not exist
-
+//has a title
+db.vampires.find({
+	title: {$exists: true}
+})
+//do not have victims 
+db.vampires.find({
+	victims: {$exists: false}
+})
+//have a title and no victims
+db.vampires.find({
+	title: {$exists: true},
+	victims: {$exists: false}
+})
+//have victims and they are greater than 1000
+db.vampires.find({
+	victims: {$exists: true, $gt: 1000}
+})
 /////////////////////////////////////////////////
 // ### Select with OR
 
