@@ -288,19 +288,36 @@ const vampireData = require('./populateVampires');
 // 	}
 // });
 
-Vampire.find(
-		{victims: {$lte: 200}}
-	, (err, foundVamps) => {
-	if(err) {
-		console.log(err);
-	} else {
-		console.log(foundVamps);//will return matches as an array
-	}
-});
+// Vampire.find(
+// 		{victims: {$lte: 200}}
+// 	, (err, foundVamps) => {
+// 	if(err) {
+// 		console.log(err);
+// 	} else {
+// 		console.log(foundVamps);//will return matches as an array
+// 	}
+// });
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // ## REPLACE
+// Vampire.update(
+// 		{name: "Claudia"},
+// 		{
+// 			$set: {name: "Eve"}
+// 		},
+// 		{
+// 			$inc: {portrayed_by: "Tilda Swinton"}
+// 		},
+// 		{upsert:true},
+// 		{strict: false}
+// 	, (err, foundVamps) => {
+// 	if(err) {
+// 		console.log(err);
+// 	} else {
+// 		console.log(foundVamps);//will return matches as an array
+// 	}
+// });//this didn't work; unsure why
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
