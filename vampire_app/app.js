@@ -9,7 +9,7 @@ const vampireData = require('../vampire_app/populateVampires.js')
 // const connectionString = 'mongodb://localhost/vampire'
 require('../db.js')
 // mongoose.connect(connectionString)
-const Vampire = require('../vampire_app/models/vampire.js')
+const Vampire = require('./models/vampire')
 // mongoose.connection.on('connected', () => {
 // 	console.log('Mongoose connected to' + connectionString)
 // })
@@ -35,143 +35,151 @@ const Vampire = require('../vampire_app/models/vampire.js')
 // 	mongoose.connection.close()
 // })
 // ### Add some new vampire data
-Vampire.collection.insertMany(vampireData,(err, data) => {
-		[{name: 'Billy',
-	  hair_color: 'brown',
-	  eye_color: 'black',
-	  dob: 12-12-12,
-	  loves: ['candy', 'cigarettes', 'cows'],
-	  location: 'Chicago',
-	  gender: 'male',
-	  victims: 134
-}],
-		[{name: 'Jason',
-	  hair_color: 'black',
-	  eye_color: 'green',
-	  dob: 12-12-12,
-	  loves: ['carnivals', 'tv', 'fictional creatures'],
-	  location: 'Canada',
-	  gender: 'male',
-	  victims: 678
-}], (err, createdVampires) => {
-	if(err){
-		console.log(err)
-	} else {
-		console.log(createdVampire)
-	}
-}
-
-    console.log("added provided vampire data")
-    mongoose.connection.close();
-  });
-Vampire.collection.insert([{
-	name: 'Billy',
-	  hair_color: 'brown',
-	  eye_color: 'black',
-	  dob: 12-12-12,
-	  loves: ['candy', 'cigarettes', 'cows'],
-	  location: 'Chicago',
-	  gender: 'male',
-	  victims: 134
-}]);
-// Vampire.create({
-// 	name: 'Josh',
-// 	  hair_color: 'brownish',
-// 	  eye_color: 'green',
+// Vampire.collection.insertMany(vampireData,(err, data) => {
+// 		[{name: 'Billy',
+// 	  hair_color: 'brown',
+// 	  eye_color: 'black',
 // 	  dob: 12-12-12,
-// 	  loves: ['tacos', 'futurama', 'blood'],
-// 	  location: 'Geneva',
+// 	  loves: ['candy', 'cigarettes', 'cows'],
+// 	  location: 'Chicago',
 // 	  gender: 'male',
-// 	  victims: 500
-// }, (err, createdVampire) => {
-// 	if(err){
-// 		console.log(err)
-// 	} else {
-// 		console.log(createdVampire)
-// 	}
-// })
-
-// Vampire.create({
-// 	name: 'Karen',
-// 	  hair_color: 'white',
-// 	  eye_color: 'red',
-// 	  dob: new Date('12-12-12'),
-// 	  loves: ['hamsters', 'killing people', 'hand sanitizer'],
-// 	  location: 'Rockford',
-// 	  gender: 'female',
-// 	  victims: 999
-// }, (err, createdVampire) => {
-// 	if(err){
-// 		console.log(err)
-// 	} else {
-// 		console.log(createdVampire)
-// 	}
-// })
-// Vampire.create({
-// 	name: 'Hillary',
+// 	  victims: 134
+// }],
+// 		[{name: 'Jason',
 // 	  hair_color: 'black',
 // 	  eye_color: 'green',
-// 	  dob: new Date('12-12-12'),
-// 	  loves: ['eating people', 'killing people', 'cats'],
-// 	  location: 'Washington',
-// 	  gender: 'female',
-// 	  victims: 2
-// }, (err, createdVampire) => {
+// 	  dob: 12-12-12,
+// 	  loves: ['carnivals', 'tv', 'fictional creatures'],
+// 	  location: 'Canada',
+// 	  gender: 'male',
+// 	  victims: 678
+// }], (err, createdVampires) => {
 // 	if(err){
 // 		console.log(err)
 // 	} else {
 // 		console.log(createdVampire)
 // 	}
-// })
-// console.log(Vampire.collection)
+// }
+
+//     console.log("added provided vampire data")
+//     mongoose.connection.close();
+//   });
+
 /////////////////////////////////////////////////
 // ## QUERYING
 
 /////////////////////////////////////////////////
 // ### Select by comparison
 //all female vampires
-// db.vampires.find({
+
+// Vampire.find({
 // 	gender: 'f'
-// })
-// //greater than 500 
-// db.vampires.find({
-// 	victims: {$gt: 500}
-// })
-// //less than or equal to 150 
-// db.vampires.find({
-// 	victims: {$lte: 150}
-// })
-// //not equal to
-// db.vampires.find({
-// 	victims: {$lte: 210234}
+// }, (err, foundVampires) => {
+// 	if(err){
+// 		console.log(err)
+// 	} else {
+// 		console.log(foundFemale)
+// 	}
 // })
 
-// db.vampires.find({
+//greater than 500 
+
+// Vampire.find({
+// 	victims: {$gt: 500}
+// }, (err, foundVampires) => {
+// 	if(err){
+// 		console.log(err)
+// 	} else {
+// 		console.log(foundVampires)
+// 	}
+// 	})
+//less than or equal to 150 
+// Vampire.find({
+// 	victims: {$lte: 150}
+// }, (err, foundVampires) => {
+// 	if(err){
+// 		console.log(err)
+// 	} else {
+// 		console.log(foundVampires)
+// 	}
+// 	})
+//not equal to
+// Vampire.find({
+// 	victims: {$ne: 210234}
+// }, (err, foundVampires) => {
+// 	if(err){
+// 		console.log(err)
+// 	} else {
+// 		console.log(foundVampires)
+// 	}
+// 	})
+
+// Vampire.find({
 // 	victims: {$gt: 150, $lt: 500}
-// })
+// }, (err, foundVampires) => {
+// 	if(err){
+// 		console.log(err)
+// 	} else {
+// 		console.log(foundVampires)
+// 	}
+// 	})
 
 /////////////////////////////////////////////////
 // ### Select by exists or does not exist
 //has a title
-db.vampires.find({
-	title: {$exists: true}
-})
+// Vampire.find({
+// 	title: {$exists: true}
+// }, (err, foundVampires) => {
+// 	if(err){
+// 		console.log(err)
+// 	} else {
+// 		console.log(foundVampires)
+// 	}
+// 	})
 //do not have victims 
-db.vampires.find({
-	victims: {$exists: false}
-})
+// Vampire.find({
+// 	victims: {$exists: false}
+// }, (err, foundVampires) => {
+// 	if(err){
+// 		console.log(err)
+// 	} else {
+// 		console.log(foundVampires)
+// 	}
+// 	})
 //have a title and no victims
-db.vampires.find({
-	title: {$exists: true},
-	victims: {$exists: false}
-})
+// Vampire.find({
+// 	title: {$exists: true},
+// 	victims: {$exists: false},
+// }, (err, foundVampires) => {
+// 	if(err){
+// 		console.log(err)
+// 	} else {
+// 		console.log(foundVampires)
+// 	}
+// 	})
 //have victims and they are greater than 1000
-db.vampires.find({
-	victims: {$exists: true, $gt: 1000}
-})
+// Vampire.find({
+// 	victims: {$exists: true, $gt: 1000}
+// }, (err, foundVampires) => {
+// 	if(err){
+// 		console.log(err)
+// 	} else {
+// 		console.log(foundVampires)
+// 	}
+// 	})
+
 /////////////////////////////////////////////////
 // ### Select with OR
-
+Vampire.find({$or: 
+	[{location: 'New York, New York, US'},
+	{location: 'New Orleans, Louisiana, US'}
+	]}, (err, foundVampires) => {
+	if(err){
+		console.log(err)
+	} else {
+		console.log(foundVampires)
+	}
+	})
 /////////////////////////////////////////////////
 //### Select objects that match one of several values
 
