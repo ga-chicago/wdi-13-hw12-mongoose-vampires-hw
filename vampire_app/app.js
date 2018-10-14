@@ -36,7 +36,8 @@ const Vampire = require('./models/vampire')
 // })
 // ### Add some new vampire data
 // Vampire.collection.insertMany(vampireData,(err, data) => {
-// 		[{name: 'Billy',
+// 	Vampire.create({
+// 		name: 'Billy',
 // 	  hair_color: 'brown',
 // 	  eye_color: 'black',
 // 	  dob: 12-12-12,
@@ -44,8 +45,8 @@ const Vampire = require('./models/vampire')
 // 	  location: 'Chicago',
 // 	  gender: 'male',
 // 	  victims: 134
-// }],
-// 		[{name: 'Jason',
+// },
+// 		{name: 'Jason',
 // 	  hair_color: 'black',
 // 	  eye_color: 'green',
 // 	  dob: 12-12-12,
@@ -53,16 +54,35 @@ const Vampire = require('./models/vampire')
 // 	  location: 'Canada',
 // 	  gender: 'male',
 // 	  victims: 678
-// }], (err, createdVampires) => {
+// },
+// 		{name: 'Sally',
+// 	  hair_color: 'black',
+// 	  eye_color: 'blue',
+// 	  dob: 12-12-12,
+// 	  loves: ['movies', 'salads', 'coding'],
+// 	  location: 'Canada',
+// 	  gender: 'male',
+// 	  victims: 678
+// },
+// 		{name: 'Janice',
+// 	  hair_color: 'white',
+// 	  eye_color: 'yellow',
+// 	  dob: 12-12-12,
+// 	  loves: ['sleeping', 'eating', 'hiking'],
+// 	  location: 'Canada',
+// 	  gender: 'male',
+// 	  victims: 678
+// },
+//  (err, createdVampires) => {
 // 	if(err){
 // 		console.log(err)
 // 	} else {
 // 		console.log(createdVampire)
 // 	}
-// }
-
+// })
 //     console.log("added provided vampire data")
 //     mongoose.connection.close();
+  
 //   });
 
 /////////////////////////////////////////////////
@@ -123,6 +143,8 @@ const Vampire = require('./models/vampire')
 // 		console.log(foundVampires)
 // 	}
 // 	})
+
+
 
 /////////////////////////////////////////////////
 // ### Select by exists or does not exist
@@ -221,6 +243,60 @@ const Vampire = require('./models/vampire')
 // 	})
 /////////////////////////////////////////////////
 //### Select objects that match one of several values
+
+
+// love either frilly shirtsleeves or frilly collars
+// Vampire.find({$or: 
+// 	[{loves: 'frilly shirtsleeves'},
+// 	{loves: 'frilly collars'}
+// 	]}, (err, foundVampires) => {
+// 	if(err){
+// 		console.log(err)
+// 	} else {
+// 		console.log(foundVampires)
+// 	}
+// 	})
+
+
+// love brooding
+
+// Vampire.find({$or: 
+// 	[{loves: 'brooding'}
+// 	]}, (err, foundVampires) => {
+// 	if(err){
+// 		console.log(err)
+// 	} else {
+// 		console.log(foundVampires)
+// 	}
+// 	})
+
+// love at least one of the following: appearing innocent, trickery, lurking in rotting mansions, R&B music
+
+// Vampire.find({$or: 
+// 	[{loves: 'appearing innocent'},
+// 	{loves: 'trickery'},
+// 	{loves: 'lurking in rotting mansions'},
+// 	{loves: 'R&B music'}
+// 	]}, (err, foundVampires) => {
+// 	if(err){
+// 		console.log(err)
+// 	} else {
+// 		console.log(foundVampires)
+// 	}
+// 	})
+
+// love fancy cloaks but not if they also love either top hats or virgin blood * Hint-You will also have to use $nin *
+
+Vampire.find({$or: 
+	[{loves: 'fancy cloaks'},
+	{loves: {$nin: [ 'top hats', 'virgin blood']}}
+	]}, (err, foundVampires) => {
+	if(err){
+		console.log(err)
+	} else {
+		console.log(foundVampires)
+	}
+	})
 
 /////////////////////////////////////////////////
 //### Negative Selection
