@@ -307,7 +307,7 @@ const vampireData = require('./populateVampires');
 // 			$set: {name: "Eve"}
 // 		},
 // 		{
-// 			$inc: {portrayed_by: "Tilda Swinton"}
+// 			$set: {portrayed_by: "Tilda Swinton"}
 // 		},
 // 		{upsert:true},
 // 		{strict: false}
@@ -317,7 +317,7 @@ const vampireData = require('./populateVampires');
 // 	} else {
 // 		console.log(foundVamps);//will return matches as an array
 // 	}
-// });//this didn't work; unsure why
+// });// '\'$set\' is empty. You must specify a field like so: {$set: {<field>: ...}}'
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
