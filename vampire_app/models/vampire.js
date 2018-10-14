@@ -9,7 +9,7 @@ const vampireSchema  = mongoose.Schema({
 	loves: [String],
 	location: String,
 	gender: String,
-	victims: {type: Number, required: true}
+	victims: {type: Number, min: 1}
 })
 
 module.exports = mongoose.model('Vampire', vampireSchema)
