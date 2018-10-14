@@ -129,16 +129,31 @@ const vampireData = require('./populateVampires');
 // 	}
 // });
 
-Vampire.find({victims: {$gt: 150, $lt: 500}}, (err, foundVamps) => {
+// Vampire.find({victims: {$gt: 150, $lt: 500}}, (err, foundVamps) => {
+// 	if(err) {
+// 		console.log(err);
+// 	} else {
+// 		console.log(foundVamps);//will return matches as an array
+// 	}
+// });
+
+/////////////////////////////////////////////////
+// ### Select by exists or does not exist
+// Vampire.find({title: {$exists: true}}, (err, foundVamps) => {
+// 	if(err) {
+// 		console.log(err);
+// 	} else {
+// 		console.log(foundVamps);//will return matches as an array
+// 	}
+// });
+
+Vampire.find({victims: {$exists: true, $gt: 1000}}, (err, foundVamps) => {
 	if(err) {
 		console.log(err);
 	} else {
 		console.log(foundVamps);//will return matches as an array
 	}
 });
-
-/////////////////////////////////////////////////
-// ### Select by exists or does not exist
 
 /////////////////////////////////////////////////
 // ### Select with OR
