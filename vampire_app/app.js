@@ -215,7 +215,7 @@ Vampire.find({
 	if(err) {
 		console.log(err);
 	} else {
-		console.log(foundVampires + 'from NY or New Orleans');
+		console.log(foundVampires, 'from NY or New Orleans');
 	} mongoose.connection.close();
 })
 
@@ -226,7 +226,7 @@ Vampire.find({
 	if(err) {
 		console.log(err);
 	} else {
-		console.log(foundVampires + 'brooding tragics');
+		console.log(foundVampires, 'brooding tragics');
 	} mongoose.connection.close();
 })
 
@@ -237,7 +237,7 @@ Vampire.find({
 	if(err) {
 		console.log(err);
 	} else {
-		console.log(foundVampires + 'marshmallow killers');
+		console.log(foundVampires, 'marshmallow killers');
 	} mongoose.connection.close();
 })
 
@@ -248,7 +248,7 @@ Vampire.find({
 	if(err) {
 		console.log(err);
 	} else {
-		console.log(foundVampires + 'red or green');
+		console.log(foundVampires, 'red or green');
 	} mongoose.connection.close();
 })
 /////////////////////////////////////////////////
@@ -260,7 +260,7 @@ Vampire.find({
 	if(err) {
 		console.log(err);
 	} else {
-		console.log(foundVampires + 'frilly vamps');
+		console.log(foundVampires, 'frilly vamps');
 	} mongoose.connection.close();
 })
 
@@ -271,7 +271,7 @@ Vampire.find({
 	if(err) {
 		console.log(err);
 	} else {
-		console.log(foundVampires + 'brooders');
+		console.log(foundVampires, 'brooders');
 	} mongoose.connection.close();
 })
 
@@ -282,7 +282,7 @@ Vampire.find({
 	if(err) {
 		console.log(err);
 	} else {
-		console.log(foundVampires + 'number 3');
+		console.log(foundVampires, 'number 3');
 	} mongoose.connection.close();
 })
 
@@ -298,7 +298,48 @@ Vampire.find({
 })
 /////////////////////////////////////////////////
 //### Negative Selection
+// 1.
+Vampire.find({
+	$and: [{loves: 'ribbons'}, {eye_color: {$ne: 'brown'}}]
+}, (err, foundVampires) => {
+	if(err) {
+		console.log(err);
+	} else {
+		console.log(foundVampires, 'part 7 question 1');
+	} mongoose.connection.close();
+})
+// 2.
+Vampire.find({
+	location: {$nin: ['Rome, Italy']}
+}, (err, foundVampires) => {
+	if(err) {
+		console.log(err);
+	} else {
+		console.log(foundVampires, 'not from Rome');
+	} mongoose.connection.close();
+})
 
+// 3.
+Vampire.find({
+	loves: {$nin: ['fancy cloaks', 'frilly shirtsleeves', 'appearing innocent', 'being tragic', 'brooding']}
+}, (err, foundVampires) => {
+	if(err) {
+		console.log(err);
+	} else {
+		console.log(foundVampires, 'do not love');
+	} mongoose.connection.close();
+})
+
+// 4.
+Vampire.find({
+	victims: {$lte: 200}
+}, (err, foundVampires) => {
+	if(err) {
+		console.log(err);
+	} else {
+		console.log(foundVampires, 'less than 200 victims');
+	} mongoose.connection.close();
+})
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // ## REPLACE
