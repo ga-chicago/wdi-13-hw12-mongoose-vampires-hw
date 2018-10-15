@@ -342,20 +342,48 @@ mongoose.connection.on('error', (err) => {
 // });
 
 // 4. Have not killed more than 200 people
-Vampire.find({victims: {$not: {$gte: 200}}},
-	(err, noKill200) => {
-		if (err){
-			console.log(err);
-		} else {
-			console.log("------------------------------ noKill200 ------------------\n", noKill200);
-		}	
-});
-// Not working ^ ^ ^
+// Vampire.find({victims: {$not: {$gte: 200}}},
+// 	(err, noKill200) => {
+// 		if (err){
+// 			console.log(err);
+// 		} else {
+// 			console.log("------------------------------ noKill200 ------------------\n", noKill200);
+// 		}	
+// });
 
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // ## REPLACE
+// 1. Replace the vampire called 'Claudia' with a vampire called 'Eve'. 
+// 'Eve' will have a key called 'portrayed_by' with the value 'Tilda Swinton'
+// Vampire.replaceOne({name: 'Claudia'}, 
+// 	{name: 'Eve',
+// 	eye_color: 'blue',
+// 	dob: new Date(1564, 5, 16, 13, 18),
+// 	loves: ['books'],
+// 	location: 'Tanger, Morocco',
+// 	gender: 'f',
+// 	victims: 123}, 
+// 	{upsert: true},
+// 	(err, replacedClaudiaWithEve) => {
+// 		if (err){console.log(err);
+// 		} else {console.log("------------------------------ replacedClaudiaWithEve ------------------\n", replacedClaudiaWithEve);}	
+			
+// 	}
+// );
+
+// 2. Replace the first male vampire with another whose name is 'Guy Man', and who has a key 'is_actually' with the value 'were-lizard'
+// Vampire.replaceOne({gender: 'm'}, 
+// 	{name: 'Guy Man',
+// 	is_actually: 'were-lizard'}, 
+// 	{upsert: true},
+// 	(err, replacedDudeWithGuyMan) => {
+// 		if (err){console.log(err);
+// 		} else {console.log("------------------------------ replacedDudeWithGuyMan ------------------\n", replacedDudeWithGuyMan);}	
+			
+// 	}
+// );
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
