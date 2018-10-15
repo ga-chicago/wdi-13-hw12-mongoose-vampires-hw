@@ -287,7 +287,15 @@ Vampire.find({
 })
 
 // 4.
-
+Vampire.find({
+	$and: [{loves: 'fancy cloaks'}, {loves: {$nin: ['top hats', 'virgin blood']}}]
+}, (err, foundVampires) => {
+	if(err) {
+		console.log(err);
+	} else {
+		console.log(foundVampires, 'part 6 question 4');
+	} mongoose.connection.close();
+})
 /////////////////////////////////////////////////
 //### Negative Selection
 
