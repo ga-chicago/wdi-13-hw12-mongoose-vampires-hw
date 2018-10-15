@@ -142,40 +142,84 @@ const vampireData = require('./populateVampires');
 /////////////////////////////////////////////////
 // ### Select by exists or does not exist
 
-Vampire.find({title: {$exists: true}}, (err, foundVamps) => {
-	if(err){
-		console.log(err);
-	}else{
-		console.log(foundVamps);
-	}
-});
+// Vampire.find({title: {$exists: true}}, (err, foundVamps) => {
+// 	if(err){
+// 		console.log(err);
+// 	}else{
+// 		console.log(foundVamps);
+// 	}
+// });
 
-Vampire.find({victims: {$exists: false}}, (err, foundVamps) => {
-	if(err){
-		console.log(err);
-	}else{
-		console.log(foundVamps);
-	}
-});
+// Vampire.find({victims: {$exists: false}}, (err, foundVamps) => {
+// 	if(err){
+// 		console.log(err);
+// 	}else{
+// 		console.log(foundVamps);
+// 	}
+// });
 
-Vampire.find({title: {$exists: true}, victims: {$exists: false}}, (err, foundVamps) => {
-	if(err){
-		console.log(err);
-	}else{
-		console.log(foundVamps);
-	}
-});
+// Vampire.find({title: {$exists: true}, victims: {$exists: false}}, (err, foundVamps) => {
+// 	if(err){
+// 		console.log(err);
+// 	}else{
+// 		console.log(foundVamps);
+// 	}
+// });
 
-Vampire.find({victims: {$exists: true, $gt: 1000}}, (err, foundVamps) => {
-	if(err){
-		console.log(err);
-	}else{
-		console.log(foundVamps);
-	}
-});
+// Vampire.find({victims: {$exists: true, $gt: 1000}}, (err, foundVamps) => {
+// 	if(err){
+// 		console.log(err);
+// 	}else{
+// 		console.log(foundVamps);
+// 	}
+// });
 
 /////////////////////////////////////////////////
 // ### Select with OR
+
+Vampire.find({$or: [
+	{location: 'New York, New York, US'}, 
+	{location: 'New Orleans, Louisiana, US'}
+	]}, (err, foundVamps) => {
+	if(err){
+		console.log(err);
+	}else{
+		console.log(foundVamps);
+	}
+});
+
+Vampire.find({$or: [
+	{loves: 'brooding'}, 
+	{loves: 'being tragic'}
+	]}, (err, foundVamps) => {
+	if(err){
+		console.log(err);
+	}else{
+		console.log(foundVamps);
+	}
+});
+
+Vampire.find({$or: [
+	{victims: {$gt: 1000}}, 
+	{loves: 'marshmallows'}
+	]}, (err, foundVamps) => {
+	if(err){
+		console.log(err);
+	}else{
+		console.log(foundVamps);
+	}
+});
+
+Vampire.find({$or: [
+	{hair_color: 'red'}, 
+	{eye_color: 'green'}
+	]}, (err, foundVamps) => {
+	if(err){
+		console.log(err);
+	}else{
+		console.log(foundVamps);
+	}
+});
 
 /////////////////////////////////////////////////
 //### Select objects that match one of several values
