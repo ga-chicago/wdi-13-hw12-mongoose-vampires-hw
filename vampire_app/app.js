@@ -296,15 +296,18 @@ mongoose.connection.on('error', (err) => {
 // });
 
 // 4. Love fancy cloaks but not if they also love either top hats or virgin blood * Hint-You will also have to use $nin *
-// Vampire.find({loves: 'fancy cloaks', loves: {$nin: ['top hats', 'virgin blood']}},
-// 	(err, fancyCloaksNoTopHats) => {
-// 		if (err){
-// 			console.log(err);
-// 		} else {
-// 			console.log("------------------------------ fancyCloaksNoTopHats ------------------\n", fancyCloaksNoTopHats);
-// 		}	
-// });
-// Cannot seem to get the syntax and/or logic right, tried many things^
+Vampire.find(
+	{$and: [
+		{loves: 'fancy cloaks'},
+		{loves: {$nin: ['top hats', 'virgin blood']}}
+	]},
+	(err, fancyCloaksNoTopHats) => {
+		if (err){
+			console.log(err);
+		} else {
+			console.log("------------------------------ fancyCloaksNoTopHats ------------------\n", fancyCloaksNoTopHats);
+		}	
+});
 
 
 /////////////////////////////////////////////////
@@ -388,6 +391,20 @@ mongoose.connection.on('error', (err) => {
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // ## UPDATE
+// 1. Update 'Guy Man' to have a gender of 'f'
+// Vampire.findOneAndUpdate({name: 'Guy Man'},
+// 	{gender: 'f'},
+// 	(err, updatedGuyManF) => {
+// 		if (err){console.log(err);
+// 		} else {console.log("------------------------------ updatedGuyManF ------------------\n", updatedGuyManF);}	
+// 	}
+// );
+
+// 2. Update 'Eve' to have a gender of 'm'
+// 3. Update 'Guy Man' to have an array called 'hates' that includes 'clothes' and 'jobs'
+// 4. Update 'Guy Man's' hates array also to include 'alarm clocks' and 'jackalopes'
+// 5. Rename 'Eve's' name field to 'moniker'
+// 6. We now no longer want to categorize female gender as "f", but rather as fems. Update all females so that the they are of gender "fems".
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
