@@ -177,52 +177,92 @@ const vampireData = require('./populateVampires');
 /////////////////////////////////////////////////
 // ### Select with OR
 
-Vampire.find({$or: [
-	{location: 'New York, New York, US'}, 
-	{location: 'New Orleans, Louisiana, US'}
-	]}, (err, foundVamps) => {
-	if(err){
-		console.log(err);
-	}else{
-		console.log(foundVamps);
-	}
-});
+// Vampire.find({$or: [
+// 	{location: 'New York, New York, US'}, 
+// 	{location: 'New Orleans, Louisiana, US'}
+// 	]}, (err, foundVamps) => {
+// 	if(err){
+// 		console.log(err);
+// 	}else{
+// 		console.log(foundVamps);
+// 	}
+// });
 
-Vampire.find({$or: [
-	{loves: 'brooding'}, 
-	{loves: 'being tragic'}
-	]}, (err, foundVamps) => {
-	if(err){
-		console.log(err);
-	}else{
-		console.log(foundVamps);
-	}
-});
+// Vampire.find({$or: [
+// 	{loves: 'brooding'}, 
+// 	{loves: 'being tragic'}
+// 	]}, (err, foundVamps) => {
+// 	if(err){
+// 		console.log(err);
+// 	}else{
+// 		console.log(foundVamps);
+// 	}
+// });
 
-Vampire.find({$or: [
-	{victims: {$gt: 1000}}, 
-	{loves: 'marshmallows'}
-	]}, (err, foundVamps) => {
-	if(err){
-		console.log(err);
-	}else{
-		console.log(foundVamps);
-	}
-});
+// Vampire.find({$or: [
+// 	{victims: {$gt: 1000}}, 
+// 	{loves: 'marshmallows'}
+// 	]}, (err, foundVamps) => {
+// 	if(err){
+// 		console.log(err);
+// 	}else{
+// 		console.log(foundVamps);
+// 	}
+// });
 
-Vampire.find({$or: [
-	{hair_color: 'red'}, 
-	{eye_color: 'green'}
-	]}, (err, foundVamps) => {
-	if(err){
-		console.log(err);
-	}else{
-		console.log(foundVamps);
-	}
-});
+// Vampire.find({$or: [
+// 	{hair_color: 'red'}, 
+// 	{eye_color: 'green'}
+// 	]}, (err, foundVamps) => {
+// 	if(err){
+// 		console.log(err);
+// 	}else{
+// 		console.log(foundVamps);
+// 	}
+// });
 
 /////////////////////////////////////////////////
 //### Select objects that match one of several values
+
+Vampire.find({$or: [
+	{loves: 'frilly shirtsleeves'}, 
+	{loves: 'frilly collars'}
+	]}, (err, foundVamps) => {
+	if(err){
+		console.log(err);
+	}else{
+		console.log(foundVamps);
+	}
+});
+
+Vampire.find({loves: 'brooding'}, (err, foundVamps) => {
+	if(err){
+		console.log(err);
+	}else{
+		console.log(foundVamps);
+	}
+});
+
+Vampire.find({$or: [
+	{loves: 'appearing innocent'},
+	{loves: 'trickery'},
+	{loves: 'lurking in rotting mansions'}, 
+	{loves: 'R&B music'}
+	]}, (err, foundVamps) => {
+	if(err){
+		console.log(err);
+	}else{
+		console.log(foundVamps);
+	}
+});
+
+Vampire.find({loves: {$in: 'fancy cloaks', $nin: ['top hats', 'virgin blood']}}, (err, foundVamps) => {
+	if(err){
+		console.log(err);
+	}else{
+		console.log(foundVamps);
+	}
+});
 
 /////////////////////////////////////////////////
 //### Negative Selection
