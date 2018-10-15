@@ -107,6 +107,38 @@ Vampire.find({gender: 'f'}, (err, foundVamps) => {
 	}
 });
 
+Vampire.find({victims: {$gt: 500}}, (err, foundVamps) => {
+	if(err){
+		console.log(err);
+	}else{
+		console.log(foundVamps);
+	}
+});
+
+Vampire.find({victims: {$lte: 150}}, (err, foundVamps) => {
+	if(err){
+		console.log(err);
+	}else{
+		console.log(foundVamps);
+	}
+});
+
+Vampire.find({victims: {$ne: 210234}}, (err, foundVamps) => {
+	if(err){
+		console.log(err);
+	}else{
+		console.log(foundVamps);
+	}
+});
+
+Vampire.find({victims: {$gt: 150, $lt: 500}}, (err, foundVamps) => {
+	if(err){
+		console.log(err);
+	}else{
+		console.log(foundVamps);
+	}
+});
+
 /////////////////////////////////////////////////
 // ### Select by exists or does not exist
 
