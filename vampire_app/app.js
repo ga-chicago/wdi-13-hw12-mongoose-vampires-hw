@@ -267,49 +267,72 @@ const vampireData = require('./populateVampires');
 /////////////////////////////////////////////////
 //### Negative Selection
 
-Vampire.find({$and: [
-	{loves:'ribbons'},
-	{eye_color: {$ne: 'green'}}]}, (err, foundVamps) => {
-	if(err){
-		console.log(err);
-	}else{
-		console.log(foundVamps);
-	}
-});
-
-Vampire.find({location: {$ne: 'Rome'}}, (err, foundVamps) => {
-	if(err){
-		console.log(err);
-	}else{
-		console.log(foundVamps);
-	}
-});
-
-Vampire.find({loves: {$nin: [
-	'fancy cloaks',
-	'frilly shirtsleeves',
-	'appearing innocent',
-	'being tragic',
-	'brooding'
-	]}}, (err, foundVamps) => {
-	if(err){
-		console.log(err);
-	}else{
-		console.log(foundVamps);
-	}
+// Vampire.find({$and: [
+// 	{loves:'ribbons'},
+// 	{eye_color: {$ne: 'green'}}]}, (err, foundVamps) => {
+// 	if(err){
+// 		console.log(err);
+// 	}else{
+// 		console.log(foundVamps);
+// 	}
 // });
 
-Vampire.find({victims: {$not: {$gt: 200}}}, (err, foundVamps) => {
-	if(err){
-		console.log(err);
-	}else{
-		console.log(foundVamps);
-	}
-});
+// Vampire.find({location: {$ne: 'Rome'}}, (err, foundVamps) => {
+// 	if(err){
+// 		console.log(err);
+// 	}else{
+// 		console.log(foundVamps);
+// 	}
+// });
+
+// Vampire.find({loves: {$nin: [
+// 	'fancy cloaks',
+// 	'frilly shirtsleeves',
+// 	'appearing innocent',
+// 	'being tragic',
+// 	'brooding'
+// 	]}}, (err, foundVamps) => {
+// 	if(err){
+// 		console.log(err);
+// 	}else{
+// 		console.log(foundVamps);
+// 	}
+// });
+
+// Vampire.find({victims: {$not: {$gt: 200}}}, (err, foundVamps) => {
+// 	if(err){
+// 		console.log(err);
+// 	}else{
+// 		console.log(foundVamps);
+// 	}
+// });
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // ## REPLACE
+
+Vampire.updateOne(
+	{name: 'Claudia'}, 
+	{$set: {name: 'Eve'}, $set: {portrayed_by: 'Tilda Swinton'}}, 
+	{new: true}, (err, updatedVamp) => {
+	if(err){
+		console.log(err);
+	}else{
+		console.log(updatedVamp);
+	}
+});
+
+Vampire.findOneAndUpdate(
+	{gender: 'm'},
+	{$set: {is_secretly:'a were-lizard'}},
+	{new: true},
+	(err, updatedVamp) => {
+		if(err){
+			console.log(err);
+		}else{
+			console.log(updatedVamp);
+		}
+});
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
