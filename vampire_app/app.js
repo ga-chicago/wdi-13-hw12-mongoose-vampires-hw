@@ -315,7 +315,7 @@ Vampire.find({
 	if(err) {
 		console.log(err);
 	} else {
-		console.log(foundVampires, 'not from Rome');
+		console.log(foundVampires);
 	} mongoose.connection.close();
 })
 
@@ -343,7 +343,23 @@ Vampire.find({
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // ## REPLACE
-
+// 1.
+Vampire.replaceOne(
+	{	
+		name: 'Claudia'
+	}, 
+	{
+		name: 'Eve',
+		portrayed_by: 'Tilda Swinton'
+	}, 
+	{upsert: true}, (err, replacedVampire) => {
+		if(err) {
+			console.log(err);
+		} else {
+			console.log(replacedVampire);
+		} mongoose.connection.close();
+	}
+)
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // ## UPDATE
