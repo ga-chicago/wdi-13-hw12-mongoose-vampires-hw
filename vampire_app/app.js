@@ -296,18 +296,18 @@ mongoose.connection.on('error', (err) => {
 // });
 
 // 4. Love fancy cloaks but not if they also love either top hats or virgin blood * Hint-You will also have to use $nin *
-Vampire.find(
-	{$and: [
-		{loves: 'fancy cloaks'},
-		{loves: {$nin: ['top hats', 'virgin blood']}}
-	]},
-	(err, fancyCloaksNoTopHats) => {
-		if (err){
-			console.log(err);
-		} else {
-			console.log("------------------------------ fancyCloaksNoTopHats ------------------\n", fancyCloaksNoTopHats);
-		}	
-});
+// Vampire.find(
+// 	{$and: [
+// 		{loves: 'fancy cloaks'},
+// 		{loves: {$nin: ['top hats', 'virgin blood']}}
+// 	]},
+// 	(err, fancyCloaksNoTopHats) => {
+// 		if (err){
+// 			console.log(err);
+// 		} else {
+// 			console.log("------------------------------ fancyCloaksNoTopHats ------------------\n", fancyCloaksNoTopHats);
+// 		}	
+// });
 
 
 /////////////////////////////////////////////////
@@ -360,50 +360,39 @@ Vampire.find(
 // ## REPLACE
 // 1. Replace the vampire called 'Claudia' with a vampire called 'Eve'. 
 // 'Eve' will have a key called 'portrayed_by' with the value 'Tilda Swinton'
-// Vampire.replaceOne({name: 'Claudia'}, 
-// 	{name: 'Eve',
-// 	eye_color: 'blue',
-// 	dob: new Date(1564, 5, 16, 13, 18),
-// 	loves: ['books'],
-// 	location: 'Tanger, Morocco',
-// 	gender: 'f',
-// 	victims: 123}, 
-// 	{upsert: true},
-// 	(err, replacedClaudiaWithEve) => {
-// 		if (err){console.log(err);
-// 		} else {console.log("------------------------------ replacedClaudiaWithEve ------------------\n", replacedClaudiaWithEve);}	
-			
-// 	}
-// );
+Vampire.replaceOne({name: 'Claudia'}, 
+	{name: 'Eve',
+	eye_color: 'blue',
+	dob: new Date(1564, 5, 16, 13, 18),
+	loves: ['books'],
+	$set: {portrayed_by: 'Tilda Swinton'},
+	location: 'Tanger, Morocco',
+	gender: 'f',
+	victims: 123}, 
+	{upsert: true},
+	(err, replacedClaudiaWithEve) => {
+		if (err){console.log(err);
+		} else {console.log("------------------------------ replacedClaudiaWithEve ------------------\n", replacedClaudiaWithEve);}	
+	}
+);
 
-// 2. Replace the first male vampire with another whose name is 'Guy Man', and who has a key 'is_actually' with the value 'were-lizard'
-// Vampire.replaceOne({gender: 'm'}, 
-// 	{name: 'Guy Man',
-// 	is_actually: 'were-lizard'}, 
-// 	{upsert: true},
-// 	(err, replacedDudeWithGuyMan) => {
-// 		if (err){console.log(err);
-// 		} else {console.log("------------------------------ replacedDudeWithGuyMan ------------------\n", replacedDudeWithGuyMan);}	
-			
-// 	}
-// );
-
+Vampire.find({}, (err, allVamps)=> {
+	if (err){console.log(err);
+	} else {console.log("------------------------------ allVamps ------------------\n", allVamps);}
+})
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // ## UPDATE
 // 1. Update 'Guy Man' to have a gender of 'f'
-// Vampire.findOneAndUpdate({name: 'Guy Man'},
-// 	{gender: 'f'},
-// 	(err, updatedGuyManF) => {
-// 		if (err){console.log(err);
-// 		} else {console.log("------------------------------ updatedGuyManF ------------------\n", updatedGuyManF);}	
-// 	}
-// );
 
 // 2. Update 'Eve' to have a gender of 'm'
+
 // 3. Update 'Guy Man' to have an array called 'hates' that includes 'clothes' and 'jobs'
+
 // 4. Update 'Guy Man's' hates array also to include 'alarm clocks' and 'jackalopes'
+
 // 5. Rename 'Eve's' name field to 'moniker'
+
 // 6. We now no longer want to categorize female gender as "f", but rather as fems. Update all females so that the they are of gender "fems".
 
 /////////////////////////////////////////////////
