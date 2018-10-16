@@ -309,38 +309,17 @@ const vampireData = require('./populateVampires');
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
-// ## REPLACE
-
-Vampire.updateOne(
-	{name: 'Claudia'}, 
-	{$set: {name: 'Eve'}, $set: {portrayed_by: 'Tilda Swinton'}}, 
-	{new: true}, (err, updatedVamp) => {
-	if(err){
-		console.log(err);
-	}else{
-		console.log(updatedVamp);
-	}
-});
-
-Vampire.findOneAndUpdate(
-	{gender: 'm'},
-	{$set: {is_secretly:'a were-lizard'}},
-	{new: true},
-	(err, updatedVamp) => {
-		if(err){
-			console.log(err);
-		}else{
-			console.log(updatedVamp);
-		}
-});
-
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
-// ## UPDATE
-
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
 // ## REMOVE
+
+Vampire.findOne({hair_color: 'brown'}, (err, foundVamp) => {
+	console.log(foundVamp);
+	Vampire.remove(foundVamp)	
+});
+
+Vampire.find({eye_color: 'blue'}, (err, foundVamps) => {
+	console.log(foundVamps);
+	Vampire.remove(foundVamps)
+});
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
