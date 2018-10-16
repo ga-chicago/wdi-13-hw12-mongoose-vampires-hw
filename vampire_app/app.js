@@ -36,6 +36,11 @@ const Vampire = require('./models/vampire')
 // })
 // ### Add some new vampire data
 // Vampire.collection.insertMany(vampireData,(err, data) => {
+	//res.send('vampire data')
+	// console.log("added provided vampire data")
+//     mongoose.connection.close();
+  
+//   });
 // 	Vampire.create({
 // 		name: 'Billy',
 // 	  hair_color: 'brown',
@@ -45,34 +50,7 @@ const Vampire = require('./models/vampire')
 // 	  location: 'Chicago',
 // 	  gender: 'male',
 // 	  victims: 134
-// },
-// 		{name: 'Jason',
-// 	  hair_color: 'black',
-// 	  eye_color: 'green',
-// 	  dob: 12-12-12,
-// 	  loves: ['carnivals', 'tv', 'fictional creatures'],
-// 	  location: 'Canada',
-// 	  gender: 'male',
-// 	  victims: 678
-// },
-// 		{name: 'Sally',
-// 	  hair_color: 'black',
-// 	  eye_color: 'blue',
-// 	  dob: 12-12-12,
-// 	  loves: ['movies', 'salads', 'coding'],
-// 	  location: 'Canada',
-// 	  gender: 'male',
-// 	  victims: 678
-// },
-// 		{name: 'Janice',
-// 	  hair_color: 'white',
-// 	  eye_color: 'yellow',
-// 	  dob: 12-12-12,
-// 	  loves: ['sleeping', 'eating', 'hiking'],
-// 	  location: 'Canada',
-// 	  gender: 'male',
-// 	  victims: 678
-// },
+	// },
 //  (err, createdVampires) => {
 // 	if(err){
 // 		console.log(err)
@@ -80,11 +58,40 @@ const Vampire = require('./models/vampire')
 // 		console.log(createdVampire)
 // 	}
 // })
-//     console.log("added provided vampire data")
-//     mongoose.connection.close();
-  
-//   });
-
+// // 	Vampire.create({
+// 		name: 'Janice',
+// 	  hair_color: 'green',
+// 	  eye_color: 'black',
+// 	  dob: 12-12-12,
+// 	  loves: ['chocolate', 'carnivals', 'sadness'],
+// 	  location: 'Chicago',
+// 	  gender: 'female',
+// 	  victims: 400
+	// },
+//  (err, createdVampires) => {
+// 	if(err){
+// 		console.log(err)
+// 	} else {
+// 		console.log(createdVampire)
+// 	}
+// })
+// // 	Vampire.create({
+// 		name: 'Greg',
+// 	  hair_color: 'brown',
+// 	  eye_color: 'black',
+// 	  dob: 12-12-12,
+// 	  loves: ['hamburgers', 'tacos', 'journalism'],
+// 	  location: 'Chicago',
+// 	  gender: 'male',
+// 	  victims: 999
+	// },
+//  (err, createdVampires) => {
+// 	if(err){
+// 		console.log(err)
+// 	} else {
+// 		console.log(createdVampire)
+// 	}
+// })
 /////////////////////////////////////////////////
 // ## QUERYING
 
@@ -364,89 +371,37 @@ const Vampire = require('./models/vampire')
 /////////////////////////////////////////////////
 // ## UPDATE
 
-// Update 'Guy Man' to have a gender of 'f'
 
-// Vampire.update({
-// 	name: 'Guy Man'},
-// 	{$set: {gender: 'f'}
-// }, (err, foundVampires) => {
-// 	if(err){
-// 		console.log(err)
-// 	} else {
-// 		console.log(foundVampires)
-// 	}
-// 	})
-
-
-// Update 'Eve' to have a gender of 'm'
-
-// Vampire.update({
-// 	name: 'Eve'},
-// 	{$set: {gender: 'm'}
-// }, (err, foundVampires) => {
-// 	if(err){
-// 		console.log(err)
-// 	} else {
-// 		console.log(foundVampires)
-// 	}
-// 	})
-
-// Update 'Guy Man' to have an array called 'hates' that includes 'clothes' and 'jobs'
-
-
-// Vampire.update({
-// 	name: 'Guy Man'},
-// 	{$push: {hates: ['clothes', 'jobs']}
-// }, (err, foundVampires) => {
-// 	if(err){
-// 		console.log(err)
-// 	} else {
-// 		console.log(foundVampires)
-// 	}
-// 	})
-
-// Update 'Guy Man's' hates array also to include 'alarm clocks' and 'jackalopes'
-
-// Vampire.update({
-// 	name: 'Guy Man'},
-// 	{$addToSet: {hates: ['alarm clocks', 'jackalopes']}
-// }, (err, foundVampires) => {
-// 	if(err){
-// 		console.log(err)
-// 	} else {
-// 		console.log(foundVampires)
-// 	}
-// 	})
-
-// Rename 'Eve's' name field to 'moniker'
-
-// Vampire.update({
-// 	name: 'Eve'},
-// 	{$rename: {name: 'moniker'}
-// }, (err, foundVampires) => {
-// 	if(err){
-// 		console.log(err)
-// 	} else {
-// 		console.log(foundVampires)
-// 	}
-// 	})
-
-// We now no longer want to categorize female gender as "f", but rather as fems. Update all females so that the they are of gender "fems".
-
-Vampire.updateMany({
-	gender: 'f'},
-	{$set: {gender: 'fems'}
-}, (err, foundVampires) => {
-	if(err){
-		console.log(err)
-	} else {
-		console.log(foundVampires)
-	}
-	})
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // ## REMOVE
+
+// Remove a single document wherein the hair_color is 'brown'
+
+// Vampire.deleteOne({
+// 	hair_color:
+// 	{$eq: 'brown'}
+// }, (err, foundVampires) => {
+// 	if(err){
+// 		console.log(err)
+// 	} else {
+// 		console.log(foundVampires)
+// 	}
+// 	})
+
+// We found out that the vampires with the blue eyes were just fakes! Let's remove all the vampires who have blue eyes from our database.
+
+// Vampire.deleteMany({
+// 	eye_color:
+// 	{$eq: 'blue'}
+// }, (err, foundVampires) => {
+// 	if(err){
+// 		console.log(err)
+// 	} else {
+// 		console.log(foundVampires)
+// 	}
+// 	})
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
