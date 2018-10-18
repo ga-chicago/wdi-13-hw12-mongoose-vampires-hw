@@ -42,54 +42,54 @@ const Vampire = require('./models/vampire')
   
 //   });
 // 	Vampire.create({
-// 		name: 'Billy',
-// 	  hair_color: 'brown',
-// 	  eye_color: 'black',
-// 	  dob: 12-12-12,
-// 	  loves: ['candy', 'cigarettes', 'cows'],
-// 	  location: 'Chicago',
-// 	  gender: 'male',
-// 	  victims: 134
-	// },
-//  (err, createdVampires) => {
-// 	if(err){
-// 		console.log(err)
-// 	} else {
+// 		  name: 'Billy',
+	// 	  hair_color: 'brown',
+	// 	  eye_color: 'black',
+	// 	  dob: 12-12-12,
+	// 	  loves: ['candy', 'cigarettes', 'cows'],
+	// 	  location: 'Chicago',
+	// 	  gender: 'male',
+	// 	  victims: 134
+		// },
+	//  (err, createdVampires) => {
+	// 	if(err){
+	// 		console.log(err)
+	// 	} else {
 // 		console.log(createdVampire)
 // 	}
 // })
 // // 	Vampire.create({
-// 		name: 'Janice',
-// 	  hair_color: 'green',
-// 	  eye_color: 'black',
-// 	  dob: 12-12-12,
-// 	  loves: ['chocolate', 'carnivals', 'sadness'],
-// 	  location: 'Chicago',
-// 	  gender: 'female',
-// 	  victims: 400
-	// },
-//  (err, createdVampires) => {
-// 	if(err){
-// 		console.log(err)
-// 	} else {
+	// 	  name: 'Janice',
+	// 	  hair_color: 'green',
+	// 	  eye_color: 'black',
+	// 	  dob: 12-12-12,
+	// 	  loves: ['chocolate', 'carnivals', 'sadness'],
+	// 	  location: 'Chicago',
+	// 	  gender: 'female',
+	// 	  victims: 400
+		// },
+	//  (err, createdVampires) => {
+	// 	if(err){
+	// 		console.log(err)
+	// 	} else {
 // 		console.log(createdVampire)
 // 	}
 // })
 // // 	Vampire.create({
-// 		name: 'Greg',
-// 	  hair_color: 'brown',
-// 	  eye_color: 'black',
-// 	  dob: 12-12-12,
-// 	  loves: ['hamburgers', 'tacos', 'journalism'],
-// 	  location: 'Chicago',
-// 	  gender: 'male',
-// 	  victims: 999
+// 		  name: 'Greg',
+	// 	  hair_color: 'brown',
+	// 	  eye_color: 'black',
+	// 	  dob: 12-12-12,
+	// 	  loves: ['hamburgers', 'tacos', 'journalism'],
+	// 	  location: 'Chicago',
+	// 	  gender: 'male',
+	// 	  victims: 999
 	// },
-//  (err, createdVampires) => {
-// 	if(err){
-// 		console.log(err)
-// 	} else {
-// 		console.log(createdVampire)
+	//  (err, createdVampires) => {
+	// 	if(err){
+	// 		console.log(err)
+	// 	} else {
+	// 		console.log(createdVampire)
 // 	}
 // })
 /////////////////////////////////////////////////
