@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const conectionString = 'mongodb://localhost/vampire';
 
-mongoose.connect(conectionString);
+mongoose.connect(conectionString, {useNewUrlParser: true});
 
 mongoose.connection.on('connected', () => {
 		console.log('Mongoose connected to' + conectionString);

@@ -15,4 +15,5 @@ const vampireSchema = mongoose.Schema({
 	}
 })
 
+const Vampire = mongoose.model('Vampire', vampireSchema);
 module.exports = mongoose.model('Vampire', vampireSchema);

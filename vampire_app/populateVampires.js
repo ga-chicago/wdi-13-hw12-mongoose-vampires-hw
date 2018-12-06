@@ -1,5 +1,5 @@
 const vampireArray = [
-  {
+{
     name: 'Count Chocula',
     hair_color: 'brown',
     eye_color: 'brown',
