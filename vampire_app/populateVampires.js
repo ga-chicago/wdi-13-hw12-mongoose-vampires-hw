@@ -1,5 +1,5 @@
-[
-  {
+const vampireArray = [
+{
     name: 'Count Chocula',
     hair_color: 'brown',
     eye_color: 'brown',
@@ -136,3 +136,5 @@
     title: 'Osiris of Sewer Rats'
   }
 ]
+module.exports = vampireArray;
+// console.log(vampireArray);
